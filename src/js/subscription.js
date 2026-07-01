@@ -3,6 +3,7 @@ import 'izitoast/dist/css/iziToast.min.css';
 
 import { subscribe } from '../api/requests/subscribe.js';
 import { EMAIL_REGEX } from '../constants/index.js';
+import { parseError } from '../lib/parseError.js';
 
 export function initSubscription() {
   //TODO need to check correct form id for subscription
@@ -50,20 +51,19 @@ export function initSubscription() {
 }
 
 function getErrorMessage(error) {
-  const status = error?.response?.status;
-  const serverMessage = error?.response?.data?.message;
+  const { status, message } = parseError(error);
 
   switch (status) {
     case 400:
-      return serverMessage ?? 'Invalid request. Please check your email.';
+      return message ?? 'Invalid request. Please check your email.';
     case 404:
-      return serverMessage ?? 'Subscription service was not found.';
+      return message ?? 'Subscription service was not found.';
     case 409:
-      return serverMessage ?? 'This email is already subscribed.';
+      return message ?? 'This email is already subscribed.';
     case 500:
-      return serverMessage ?? 'Server error. Please try again later.';
+      return message ?? 'Server error. Please try again later.';
     default:
-      return serverMessage ?? 'Something went wrong. Please try again later.';
+      return message ?? 'Something went wrong. Please try again later.';
   }
 }
 
