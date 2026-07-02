@@ -1,0 +1,485 @@
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.is-hidden {
+  display: none;
+}
+
+.favorites-page {
+  background-color: var(--color-light);
+}
+
+.favorites-section__container {
+  padding-top: 84px;
+}
+
+@media only screen and (min-width: 768px) {
+  .favorites-section__container {
+    padding-top: 100px;
+  }
+}
+
+.favorites-section__title {
+  margin: 0 0 20px;
+  font-size: 44px;
+  font-weight: 400;
+  line-height: 1.09;
+  letter-spacing: -0.88px;
+}
+
+@media only screen and (min-width: 768px) {
+  .favorites-section__title {
+    margin-bottom: 32px;
+  }
+}
+
+.favorites-layout {
+  display: grid;
+  gap: 20px;
+}
+
+@media only screen and (min-width: 768px) {
+  .favorites-layout {
+    gap: 16px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .favorites-layout {
+    grid-template-columns: 494px minmax(0, 1fr);
+    align-items: start;
+    column-gap: 32px;
+  }
+
+  .favorites-layout.is-empty {
+    grid-template-columns: 494px minmax(0, 1fr);
+  }
+}
+
+.favorites-layout__summary,
+.favorites-layout__content {
+  display: grid;
+  gap: 20px;
+}
+
+@media only screen and (min-width: 768px) {
+  .favorites-layout__summary,
+  .favorites-layout__content {
+    gap: 16px;
+  }
+}
+
+.favorites-layout__summary {
+  margin-bottom: 20px;
+}
+
+@media only screen and (min-width: 768px) {
+  .favorites-layout__summary {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: stretch;
+    margin-bottom: 48px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .favorites-layout__summary {
+    grid-template-columns: 239px minmax(0, 1fr);
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .favorites-layout.is-empty .favorites-layout__content {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+
+  .favorites-layout.is-filled .favorites-layout__content {
+    align-content: start;
+  }
+}
+
+.favorites-quote {
+  display: flex;
+  gap: 18px;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: var(--color-dark);
+  color: var(--color-white);
+}
+
+@media only screen and (min-width: 768px) {
+  .favorites-quote {
+    grid-column: 1 / -1;
+    padding: 40px;
+    border-radius: 30px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .favorites-quote {
+    grid-column: 1 / -1;
+    min-height: 230px;
+  }
+}
+
+.favorites-quote__icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 20px;
+  background-color: rgba(244, 244, 244, 0.2);
+}
+
+@media only screen and (min-width: 768px) {
+  .favorites-quote__icon-wrapper {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.favorites-quote__content {
+  min-width: 0;
+  width: 100%;
+}
+
+.favorites-quote__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 6px;
+}
+
+.favorites-quote__title {
+  margin: 0;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1;
+  font-feature-settings:
+    'liga' off,
+    'clig' off;
+}
+
+@media only screen and (min-width: 768px) {
+  .favorites-quote__title {
+    font-size: 24px;
+  }
+}
+
+.favorites-quote__mark {
+  flex-shrink: 0;
+}
+
+.favorites-quote__text {
+  margin: 0 0 16px;
+  font-size: 14px;
+  line-height: 1.28;
+  color: rgba(244, 244, 244, 0.6);
+}
+
+@media only screen and (min-width: 768px) {
+  .favorites-quote__text {
+    max-width: 525px;
+    margin-bottom: 18px;
+  }
+}
+
+.favorites-quote__author {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.28;
+}
+
+@media only screen and (min-width: 768px) {
+  .favorites-quote__author {
+    font-size: 16px;
+  }
+}
+
+.favorites-benefit {
+  padding: 20px;
+  border-radius: 20px;
+  background-color: var(--color-white);
+}
+
+@media only screen and (min-width: 768px) {
+  .favorites-benefit {
+    min-height: 141px;
+    padding: 25px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .favorites-benefit {
+    padding: 25px 20px;
+  }
+}
+
+.favorites-benefit__icon-wrapper {
+  display: inline-flex;
+  margin-bottom: 16px;
+}
+
+.favorites-benefit__value {
+  margin: 0 0 6px;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1;
+  font-feature-settings:
+    'liga' off,
+    'clig' off;
+}
+
+@media only screen and (min-width: 768px) {
+  .favorites-benefit__value {
+    font-size: 24px;
+  }
+}
+
+.favorites-benefit__description {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.28;
+  color: rgba(36, 36, 36, 0.6);
+}
+
+@media only screen and (min-width: 768px) {
+  .favorites-benefit__description {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .favorites-image-card {
+    min-height: 141px;
+  }
+}
+
+.favorites-image-card__picture,
+.favorites-image-card__image {
+  display: block;
+  width: 100%;
+}
+
+.favorites-image-card__image {
+  max-height: 119px;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+@media only screen and (min-width: 768px) {
+  .favorites-image-card__image {
+    max-height: 141px;
+    border-radius: 20px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .favorites-empty-state {
+    padding-top: 48px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .favorites-empty-state {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+    padding: 0;
+    width: 100%;
+  }
+
+  .favorites-empty-state.is-hidden {
+    display: none;
+  }
+}
+
+.favorites-empty-state__text {
+  max-width: 318px;
+  margin: 0 auto;
+  font-size: 14px;
+  line-height: 1.28;
+  text-align: center;
+}
+
+@media only screen and (min-width: 768px) {
+  .favorites-empty-state__text {
+    max-width: 554px;
+    font-size: 18px;
+    line-height: 1.33;
+  }
+}
+
+.favorites-list-section {
+  display: grid;
+  gap: 20px;
+}
+
+@media only screen and (min-width: 768px) {
+  .favorites-list-section {
+    gap: 16px;
+  }
+}
+
+.favorites-exercises-list {
+  display: grid;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media only screen and (min-width: 768px) {
+  .favorites-exercises-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .favorites-layout.is-filled .favorites-exercises-list {
+    max-height: 748px;
+    overflow-y: auto;
+    padding-right: 8px;
+    gap: 32px 16px;
+  }
+
+  .favorites-layout.is-filled .favorites-exercises-list::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .favorites-layout.is-filled
+    .favorites-exercises-list::-webkit-scrollbar-thumb {
+    border-radius: 12px;
+    background-color: rgba(36, 36, 36, 0.2);
+  }
+}
+
+.favorites-exercises-item {
+  min-width: 0;
+}
+
+.favorite-exercise-card {
+  display: grid;
+  gap: 18px;
+  padding: 16px;
+  border-radius: 15px;
+  background-color: var(--color-white);
+}
+
+@media only screen and (min-width: 768px) {
+  .favorite-exercise-card {
+    gap: 24px;
+    min-height: 165px;
+    padding: 16px 18px;
+  }
+}
+
+.favorite-exercise-card__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.favorite-exercise-card__badge-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.favorite-exercise-card__badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 26px;
+  padding: 4px 12px;
+  border: 1px solid currentColor;
+  border-radius: 15px;
+  font-size: 12px;
+  line-height: 1.33;
+  text-transform: uppercase;
+}
+
+.favorite-exercise-card__remove,
+.favorite-exercise-card__start {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.favorite-exercise-card__remove {
+  line-height: 0;
+}
+
+.favorite-exercise-card__main {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.favorite-exercise-card__icon-wrap {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--color-dark);
+  color: var(--color-white);
+}
+
+.favorite-exercise-card__title {
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.favorite-exercise-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.favorite-exercise-card__meta-item {
+  font-size: 12px;
+  line-height: 1.5;
+  color: rgba(36, 36, 36, 0.4);
+}
+
+.favorite-exercise-card__meta-item span {
+  color: var(--color-dark);
+}
+
+.favorites-pagination {
+  display: flex;
+  justify-content: center;
+}
