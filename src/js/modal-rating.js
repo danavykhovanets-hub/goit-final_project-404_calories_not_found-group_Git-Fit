@@ -1,5 +1,4 @@
-import iziToast from 'izitoast';
-import 'izitoast/dist/css/iziToast.min.css';
+import { generateErrorToastMessage } from '../js/toastMessages.js';
 
 import { addRating } from '../api/requests/addRating.js';
 import { parseError } from '../lib/parseError.js';
@@ -8,11 +7,7 @@ export async function submitRating(id, data) {
   try {
     return await addRating(id, data);
   } catch (error) {
-    iziToast.error({
-      title: 'Error',
-      message: getErrorMessage(error),
-      position: 'topRight',
-    });
+    generateErrorToastMessage(getErrorMessage(error));
     return null;
   }
 }
