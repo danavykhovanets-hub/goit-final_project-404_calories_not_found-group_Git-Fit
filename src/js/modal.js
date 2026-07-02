@@ -1,8 +1,7 @@
-import 'star-rating.js/dist/star-rating.min.css';
 import StarRating from 'star-rating.js';
-
-// TODO:
-// 1) Add onSubmit for form + validation
+import 'star-rating.js/dist/star-rating.min.css';
+import { generateErrorToastMessage } from './toastMessages.js';
+import { submitRating } from '../api/requests/addRating.js';
 
 const refs = {
   modalExerciceOpenElem: document.querySelector('[data-exercice-modal-open]'),
@@ -14,12 +13,11 @@ const refs = {
   starRatingSelect: null,
 };
 
-let excerciceModalData = null;
 let currentModalType = null;
-
-// Temporary mock data for testing purposes.
+// TODO: Replace temporary mock data.
 // Will be removed when the modal is switched to the favorites section.
-const mockExerciceData = {
+// TODO: Add logic for saving the excercice data to the local storage
+let currentExerciceData = {
   _id: '64f389465ae26083f39b17a2',
   bodyPart: 'waist',
   equipment: 'body weight',
@@ -113,7 +111,7 @@ const renderRatingModal = () => {
         <h2 class="modal_rating_title">Rating</h2>
         <div class="modal_rating_star_raiting_container">
           <p class="modal_rating_star_rating_number">0.0</p>
-          <select class="star-rating-active">
+          <select class="star-rating-active" name="rate">
             <option value="">Select a rating</option>
             <option value="5">Excellent</option>
             <option value="4">Very Good</option>
@@ -134,7 +132,7 @@ const renderRatingModal = () => {
         </label>
         <textarea
           class="modal_rating_textarea"
-          name="comment"
+          name="review"
           placeholder="Your comment"
         ></textarea>
         <button class="modal_btn modal_rating_submit" type="submit">Send</button>
@@ -155,13 +153,8 @@ export const onExerciceModalOpen = event => {
   refs.modalContainer.classList.add('modal-large');
   currentModalType = 'exercice';
 
-  if (excerciceModalData) {
-    refs.modalContent.innerHTML = excerciceModalData;
-  } else {
-    const exerciceModalContent = renderExerciceModal(mockExerciceData);
-    refs.modalContent.innerHTML = exerciceModalContent;
-    excerciceModalData = exerciceModalContent;
-  }
+  const exerciceModalContent = renderExerciceModal(currentExerciceData);
+  refs.modalContent.innerHTML = exerciceModalContent;
 
   requestAnimationFrame(() => {
     const stars = new StarRating('.star-rating', {
@@ -200,6 +193,7 @@ export const onRatingModalOpen = () => {
 
 export const onModalClose = () => {
   if (currentModalType === 'rating') {
+    refs.starRatingSelect.removeEventListener('change', onStarRatingSelect);
     onExerciceModalOpen();
     return;
   }
@@ -210,6 +204,7 @@ export const onModalClose = () => {
 const onOverlayClick = e => {
   if (e.target === refs.overlay) {
     if (currentModalType === 'rating') {
+      refs.starRatingSelect.removeEventListener('change', onStarRatingSelect);
       onExerciceModalOpen();
       return;
     }
@@ -221,6 +216,7 @@ const onOverlayClick = e => {
 const onEscapeKeyClick = e => {
   if (e.key === 'Escape') {
     if (currentModalType === 'rating') {
+      refs.starRatingSelect.removeEventListener('change', onStarRatingSelect);
       onExerciceModalOpen();
       return;
     }
@@ -238,12 +234,30 @@ const onStarRatingSelect = event => {
   modalTextValueElem.textContent = `${selectedRatingValue}.0`;
 };
 
-const onRatingFormSubmit = event => {
+const onRatingFormSubmit = async event => {
   event.preventDefault();
 
-  // Add validation logic
+  if (!currentExerciceData) {
+    generateErrorToastMessage(
+      'Excercice is not found. Please, try one more time.'
+    );
+  }
 
-  // Add API logic
+  const formData = new FormData(event.target);
+  const validatedData = {
+    rate: Number(formData.get('rate')),
+    email: formData.get('email'),
+    review: formData.get('review'),
+  };
+
+  if (Object.values(validatedData).some(value => !value)) {
+    generateErrorToastMessage(
+      'Please make sure that you had filled in all the values.'
+    );
+    return;
+  }
+
+  await submitRating(currentExerciceData._id, validatedData);
 
   onExerciceModalOpen();
 };
