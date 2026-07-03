@@ -1,3 +1,5 @@
+import iconsUrl from '../img/icons.svg';
+
 const escapeHtml = (value = '') => {
   return String(value)
     .replaceAll('&', '&amp;')
@@ -18,7 +20,7 @@ const renderMetaControl = (exercise, options) => {
         data-exercise-id="${exercise._id}"
       >
         <svg class="favorite-meta-icon" width="16" height="16" aria-hidden="true">
-          <use href="./img/icons.svg#trash"></use>
+          <use href="${iconsUrl}#trash"></use>
         </svg>
       </button>
     `;
@@ -36,7 +38,7 @@ const renderMetaControl = (exercise, options) => {
     >
       <span class="rating-span">${rating}</span>
       <svg class="rating-svg" aria-hidden="true">
-        <use href="./img/icons.svg#star_yellow"></use>
+        <use href="${iconsUrl}#star_yellow"></use>
       </svg>
     </button>
   `;
@@ -72,7 +74,7 @@ export const renderExerciseCard = (exercise, options = {}) => {
             >
               <span class="start-span">Start</span>
               <svg class="start-svg" aria-hidden="true">
-                <use href="./img/icons.svg#arrow-next-page"></use>
+                <use href="${iconsUrl}#arrow-next-page"></use>
               </svg>
             </button>
           </div>
@@ -80,7 +82,7 @@ export const renderExerciseCard = (exercise, options = {}) => {
           <div class="exercise-card-name">
             <div class="human-svg-wrapper" aria-hidden="true">
               <svg class="human-svg">
-                <use href="./img/icons.svg#running_figure_white"></use>
+                <use href="${iconsUrl}#running_figure_white"></use>
               </svg>
             </div>
             <h3 class="exercise-card-title">${escapeHtml(exercise.name)}</h3>
