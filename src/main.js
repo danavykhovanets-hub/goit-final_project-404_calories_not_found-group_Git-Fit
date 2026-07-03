@@ -3,6 +3,7 @@ import { renderCategories } from './js/render.js';
 import { initSubscription } from './js/subscription.js';
 import { initPagination } from './js/pagination.js';
 import { renderQuoteOfTheDay } from './js/quote.js';
+import { initScrollUp } from './js/scroll-up.js';
 
 import './js/modal.js';
 
@@ -18,3 +19,4 @@ renderCategories();
 initSubscription();
 initPagination();
 renderQuoteOfTheDay();
+initScrollUp();
