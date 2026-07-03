@@ -1,3 +1,5 @@
+import iconsUrl from '../img/icons.svg';
+
 const VISIBLE_PAGES_COUNT = 5;
 
 export function initPagination() {}
@@ -79,7 +81,7 @@ function createArrowButtonMarkup({ direction, page, disabled, label }) {
       ${disabled ? 'disabled' : ''}
     >
       <svg class="home-pagination-arrow-icon" width="6" height="12" aria-hidden="true">
-        <use href="./img/icons.svg#pagination-arrow"></use>
+        <use href="${iconsUrl}#pagination-arrow"></use>
       </svg>
     </button>
   `;
