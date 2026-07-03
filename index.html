@@ -13,19 +13,138 @@
     />
     <script type="module" crossorigin src="/goit-advancedjs-finalproject-group_4/index.js"></script>
     <link rel="modulepreload" crossorigin href="/goit-advancedjs-finalproject-group_4/assets/vendor-Ht0x2cLd.js">
-    <link rel="modulepreload" crossorigin href="/goit-advancedjs-finalproject-group_4/assets/parseError-D19OIwGj.js">
-    <link rel="stylesheet" crossorigin href="/goit-advancedjs-finalproject-group_4/assets/parseError-B733N7K7.css">
+    <link rel="modulepreload" crossorigin href="/goit-advancedjs-finalproject-group_4/assets/parseError-nq7fh1Bt.js">
+    <link rel="stylesheet" crossorigin href="/goit-advancedjs-finalproject-group_4/assets/parseError-DUjpfiIW.css">
     <link rel="stylesheet" crossorigin href="/goit-advancedjs-finalproject-group_4/assets/vendor-BK3fR81P.css">
   </head>
   <body>
-    <header></header>
+    <header class="site-header">
+  <div class="container header-container">
+    <a class="logo header-logo" href="./index.html" aria-label="Your Energy home">
+      <svg class="logo-icon" width="132" height="14" aria-hidden="true">
+        <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C84vRwza.svg#yourenergy"></use>
+      </svg>
+    </a>
+
+    <nav class="header-nav" aria-label="Main navigation">
+      <ul class="header-nav-list">
+        <li class="header-nav-item">
+          <a class="header-nav-link" href="./index.html" data-nav-link="home">Home</a>
+        </li>
+        <li class="header-nav-item">
+          <a class="header-nav-link" href="./favorites.html" data-nav-link="favorites">Favorites</a>
+        </li>
+      </ul>
+    </nav>
+
+    <ul class="socials-list header-socials" aria-label="GoIT social media links">
+      <li class="socials-item">
+        <a class="socials-link socials-link-light" href="https://www.facebook.com/goITclub/" target="_blank" rel="noopener noreferrer" aria-label="GoIT Facebook">
+          <svg class="socials-icon socials-icon-default" width="28" height="28" aria-hidden="true">
+            <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C84vRwza.svg#facebook_black"></use>
+          </svg>
+          <svg class="socials-icon socials-icon-hover" width="28" height="28" aria-hidden="true">
+            <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C84vRwza.svg#facebook_white"></use>
+          </svg>
+        </a>
+      </li>
+      <li class="socials-item">
+        <a class="socials-link socials-link-light" href="https://www.instagram.com/goitclub/" target="_blank" rel="noopener noreferrer" aria-label="GoIT Instagram">
+          <svg class="socials-icon socials-icon-default" width="28" height="28" aria-hidden="true">
+            <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C84vRwza.svg#instagram_black"></use>
+          </svg>
+          <svg class="socials-icon socials-icon-hover" width="28" height="28" aria-hidden="true">
+            <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C84vRwza.svg#instagram_white"></use>
+          </svg>
+        </a>
+      </li>
+      <li class="socials-item">
+        <a class="socials-link socials-link-light" href="https://www.youtube.com/c/GoIT" target="_blank" rel="noopener noreferrer" aria-label="GoIT YouTube">
+          <svg class="socials-icon socials-icon-default" width="28" height="28" aria-hidden="true">
+            <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C84vRwza.svg#youtube_black"></use>
+          </svg>
+          <svg class="socials-icon socials-icon-hover" width="28" height="28" aria-hidden="true">
+            <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C84vRwza.svg#youtube_white"></use>
+          </svg>
+        </a>
+      </li>
+    </ul>
+
+    <button class="mobile-menu-open" type="button" aria-label="Open mobile menu" aria-expanded="false" aria-controls="mobile-menu" data-menu-open>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true" inert data-menu>
+    <div class="container mobile-menu-container">
+      <div class="mobile-menu-top">
+        <a class="logo mobile-menu-logo" href="./index.html" aria-label="Your Energy home">
+          <svg class="logo-icon" width="132" height="14" aria-hidden="true">
+            <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C84vRwza.svg#yourenergy"></use>
+          </svg>
+        </a>
+        <button class="mobile-menu-close" type="button" aria-label="Close mobile menu" data-menu-close>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+      <nav class="mobile-nav" aria-label="Mobile navigation">
+        <ul class="mobile-nav-list">
+          <li class="mobile-nav-item">
+            <a class="mobile-nav-link" href="./index.html" data-nav-link="home">Home</a>
+          </li>
+          <li class="mobile-nav-item">
+            <a class="mobile-nav-link" href="./favorites.html" data-nav-link="favorites">Favorites</a>
+          </li>
+        </ul>
+      </nav>
+
+      <ul class="socials-list mobile-socials" aria-label="GoIT social media links">
+        <li class="socials-item">
+          <a class="socials-link socials-link-dark" href="https://www.facebook.com/goITclub/" target="_blank" rel="noopener noreferrer" aria-label="GoIT Facebook">
+            <svg class="socials-icon socials-icon-default" width="28" height="28" aria-hidden="true">
+              <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C84vRwza.svg#facebook_white"></use>
+            </svg>
+            <svg class="socials-icon socials-icon-hover" width="28" height="28" aria-hidden="true">
+              <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C84vRwza.svg#facebook_black"></use>
+            </svg>
+          </a>
+        </li>
+        <li class="socials-item">
+          <a class="socials-link socials-link-dark" href="https://www.instagram.com/goitclub/" target="_blank" rel="noopener noreferrer" aria-label="GoIT Instagram">
+            <svg class="socials-icon socials-icon-default" width="28" height="28" aria-hidden="true">
+              <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C84vRwza.svg#instagram_white"></use>
+            </svg>
+            <svg class="socials-icon socials-icon-hover" width="28" height="28" aria-hidden="true">
+              <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C84vRwza.svg#instagram_black"></use>
+            </svg>
+          </a>
+        </li>
+        <li class="socials-item">
+          <a class="socials-link socials-link-dark" href="https://www.youtube.com/c/GoIT" target="_blank" rel="noopener noreferrer" aria-label="GoIT YouTube">
+            <svg class="socials-icon socials-icon-default" width="28" height="28" aria-hidden="true">
+              <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C84vRwza.svg#youtube_white"></use>
+            </svg>
+            <svg class="socials-icon socials-icon-hover" width="28" height="28" aria-hidden="true">
+              <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C84vRwza.svg#youtube_black"></use>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+
     <main>
       <section class="hero-section">
     <div class="hero-content">
         <div class="hero-text">
             <h1 class="hero-text-title">
                 <svg class="hero-svg" width="38" height="38">
-                    <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C6RHPniy.svg#sun"></use>
+                    <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C84vRwza.svg#sun"></use>
                 </svg>Get <span class="hero-text-title-span">Body</span> in shape,<br>Stay healthy
             </h1>    
             <p class="hero-text-description">Transform your physique and embrace a healthier lifestyle with our comprehensive fitness and nutrition support.</p>
@@ -87,7 +206,7 @@
             <input type="text" name="search-query" class="filters-input" placeholder="Search"/>
             <button type="submit" class="filters-search-btn">
                 <svg class="filters-search-svg">
-                    <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C6RHPniy.svg#search_symbol"></use>
+                    <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C84vRwza.svg#search_symbol"></use>
                 </svg>
             </button>
         </form> 
@@ -179,21 +298,21 @@
                                         <button type="button" class="rating-subgroup" aria-label="Rate this exercise" data-id="">
                                             <span class="rating-span">4.0</span>
                                             <svg class="rating-svg">
-                                                <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C6RHPniy.svg#star_yellow"></use>
+                                                <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C84vRwza.svg#star_yellow"></use>
                                             </svg>
                                         </button>
                                     </div>
                                     <button type="button" class="start-btn" data-id="">
                                         <span class="start-span">Start</span>
                                         <svg class="start-svg">
-                                            <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C6RHPniy.svg#arrow-next-page"></use>
+                                            <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C84vRwza.svg#arrow-next-page"></use>
                                         </svg>
                                     </button>
                                 </div>
                                 <div class="exercise-card-name">
                                     <div class="human-svg-wrapper">
                                         <svg class="human-svg">
-                                            <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C6RHPniy.svg#running_figure_white"></use>
+                                            <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C84vRwza.svg#running_figure_white"></use>
                                         </svg>
                                     </div>
                                     <h3 class="exercise-card-title">Air bike</h3>
@@ -224,21 +343,21 @@
                                         <button type="button" class="rating-subgroup" aria-label="Rate this exercise" data-id="">
                                             <span class="rating-span">4.0</span>
                                             <svg class="rating-svg">
-                                                <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C6RHPniy.svg#star_yellow"></use>
+                                                <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C84vRwza.svg#star_yellow"></use>
                                             </svg>
                                         </button>
                                     </div>
                                     <button type="button" class="start-btn" data-id="">
                                         <span class="start-span">Start</span>
                                         <svg class="start-svg">
-                                            <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C6RHPniy.svg#arrow-next-page"></use>
+                                            <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C84vRwza.svg#arrow-next-page"></use>
                                         </svg>
                                     </button>
                                 </div>
                                 <div class="exercise-card-name">
                                     <div class="human-svg-wrapper">
                                         <svg class="human-svg">
-                                            <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C6RHPniy.svg#running_figure_white"></use>
+                                            <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C84vRwza.svg#running_figure_white"></use>
                                         </svg>
                                     </div>
                                     <h3 class="exercise-card-title">Air bike</h3>
@@ -269,21 +388,21 @@
                                         <button type="button" class="rating-subgroup" aria-label="Rate this exercise" data-id="">
                                             <span class="rating-span">4.0</span>
                                             <svg class="rating-svg">
-                                                <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C6RHPniy.svg#star_yellow"></use>
+                                                <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C84vRwza.svg#star_yellow"></use>
                                             </svg>
                                         </button>
                                     </div>
                                     <button type="button" class="start-btn" data-id="">
                                         <span class="start-span">Start</span>
                                         <svg class="start-svg">
-                                            <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C6RHPniy.svg#arrow-next-page"></use>
+                                            <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C84vRwza.svg#arrow-next-page"></use>
                                         </svg>
                                     </button>
                                 </div>
                                 <div class="exercise-card-name">
                                     <div class="human-svg-wrapper">
                                         <svg class="human-svg">
-                                            <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C6RHPniy.svg#running_figure_white"></use>
+                                            <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C84vRwza.svg#running_figure_white"></use>
                                         </svg>
                                     </div>
                                     <h3 class="exercise-card-title">Air bike</h3>
@@ -314,21 +433,21 @@
                                         <button type="button" class="rating-subgroup" aria-label="Rate this exercise" data-id="">
                                             <span class="rating-span">4.0</span>
                                             <svg class="rating-svg">
-                                                <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C6RHPniy.svg#star_yellow"></use>
+                                                <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C84vRwza.svg#star_yellow"></use>
                                             </svg>
                                         </button>
                                     </div>
                                     <button type="button" class="start-btn" data-id="">
                                         <span class="start-span">Start</span>
                                         <svg class="start-svg">
-                                            <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C6RHPniy.svg#arrow-next-page"></use>
+                                            <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C84vRwza.svg#arrow-next-page"></use>
                                         </svg>
                                     </button>
                                 </div>
                                 <div class="exercise-card-name">
                                     <div class="human-svg-wrapper">
                                         <svg class="human-svg">
-                                            <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C6RHPniy.svg#running_figure_white"></use>
+                                            <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C84vRwza.svg#running_figure_white"></use>
                                         </svg>
                                     </div>
                                     <h3 class="exercise-card-title">Air bike</h3>
@@ -359,21 +478,21 @@
                                         <button type="button" class="rating-subgroup" aria-label="Rate this exercise" data-id="">
                                             <span class="rating-span">4.0</span>
                                             <svg class="rating-svg">
-                                                <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C6RHPniy.svg#star_yellow"></use>
+                                                <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C84vRwza.svg#star_yellow"></use>
                                             </svg>
                                         </button>
                                     </div>
                                     <button type="button" class="start-btn" data-id="">
                                         <span class="start-span">Start</span>
                                         <svg class="start-svg">
-                                            <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C6RHPniy.svg#arrow-next-page"></use>
+                                            <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C84vRwza.svg#arrow-next-page"></use>
                                         </svg>
                                     </button>
                                 </div>
                                 <div class="exercise-card-name">
                                     <div class="human-svg-wrapper">
                                         <svg class="human-svg">
-                                            <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C6RHPniy.svg#running_figure_white"></use>
+                                            <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C84vRwza.svg#running_figure_white"></use>
                                         </svg>
                                     </div>
                                     <h3 class="exercise-card-title">Air bike</h3>
@@ -404,21 +523,21 @@
                                         <button type="button" class="rating-subgroup" aria-label="Rate this exercise" data-id="">
                                             <span class="rating-span">4.0</span>
                                             <svg class="rating-svg">
-                                                <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C6RHPniy.svg#star_yellow"></use>
+                                                <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C84vRwza.svg#star_yellow"></use>
                                             </svg>
                                         </button>
                                     </div>
                                     <button type="button" class="start-btn" data-id="">
                                         <span class="start-span">Start</span>
                                         <svg class="start-svg">
-                                            <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C6RHPniy.svg#arrow-next-page"></use>
+                                            <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C84vRwza.svg#arrow-next-page"></use>
                                         </svg>
                                     </button>
                                 </div>
                                 <div class="exercise-card-name">
                                     <div class="human-svg-wrapper">
                                         <svg class="human-svg">
-                                            <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C6RHPniy.svg#running_figure_white"></use>
+                                            <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C84vRwza.svg#running_figure_white"></use>
                                         </svg>
                                     </div>
                                     <h3 class="exercise-card-title">Air bike</h3>
@@ -451,7 +570,7 @@
                     <div class="quote">
                         <div class="quote-man-svg-wrap">
                             <svg class="quote-man-svg">
-                                <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C6RHPniy.svg#running_figure_white"></use>
+                                <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C84vRwza.svg#running_figure_white"></use>
                             </svg>
                         </div>
                         <div class="quote-content">
@@ -469,7 +588,7 @@
                             </p>
                         </div>
                         <svg class="quote-marks-svg">
-                            <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C6RHPniy.svg#invertedcommas"></use>
+                            <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C84vRwza.svg#invertedcommas"></use>
                         </svg>
                     </div>
                     <img class="quote-img"
@@ -482,7 +601,7 @@
                 <div class="motivation">
                     <div class="motivation-svg-wrap">
                         <svg class="motivation-svg">
-                            <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C6RHPniy.svg#dumbell_white"></use>
+                            <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C84vRwza.svg#dumbell_white"></use>
                         </svg>
                     </div>
                     <div class="motivation-text-wrapper">
@@ -504,7 +623,86 @@
     </div>
 </section>
     </main>
-    <footer></footer>
+    <footer class="site-footer">
+  <div class="container footer-container">
+    <div class="footer-brand-block">
+      <a class="logo footer-logo" href="./index.html" aria-label="Your Energy home">
+        <svg class="footer-logo-icon" width="132" height="14" aria-hidden="true">
+          <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C84vRwza.svg#yourenergy"></use>
+        </svg>
+      </a>
+
+      <ul class="socials-list footer-socials" aria-label="GoIT social media links">
+        <li class="socials-item">
+          <a class="socials-link socials-link-dark" href="https://www.facebook.com/goITclub/" target="_blank" rel="noopener noreferrer" aria-label="GoIT Facebook">
+            <svg class="socials-icon socials-icon-default" width="28" height="28" aria-hidden="true">
+              <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C84vRwza.svg#facebook_white"></use>
+            </svg>
+            <svg class="socials-icon socials-icon-hover" width="28" height="28" aria-hidden="true">
+              <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C84vRwza.svg#facebook_black"></use>
+            </svg>
+          </a>
+        </li>
+        <li class="socials-item">
+          <a class="socials-link socials-link-dark" href="https://www.instagram.com/goitclub/" target="_blank" rel="noopener noreferrer" aria-label="GoIT Instagram">
+            <svg class="socials-icon socials-icon-default" width="28" height="28" aria-hidden="true">
+              <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C84vRwza.svg#instagram_white"></use>
+            </svg>
+            <svg class="socials-icon socials-icon-hover" width="28" height="28" aria-hidden="true">
+              <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C84vRwza.svg#instagram_black"></use>
+            </svg>
+          </a>
+        </li>
+        <li class="socials-item">
+          <a class="socials-link socials-link-dark" href="https://www.youtube.com/c/GoIT" target="_blank" rel="noopener noreferrer" aria-label="GoIT YouTube">
+            <svg class="socials-icon socials-icon-default" width="28" height="28" aria-hidden="true">
+              <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C84vRwza.svg#youtube_white"></use>
+            </svg>
+            <svg class="socials-icon socials-icon-hover" width="28" height="28" aria-hidden="true">
+              <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C84vRwza.svg#youtube_black"></use>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <p class="footer-slogan footer-slogan-mobile"><span class="footer-slogan-line">Transforming your</span><span class="footer-slogan-line"><span class="footer-slogan-accent">body shape</span> with us</span></p>
+
+    <p class="footer-slogan footer-slogan-desktop"><span class="footer-slogan-line">Transforming your <span class="footer-slogan-accent">body</span></span><span class="footer-slogan-line">shape with us</span></p>
+
+    <div class="footer-subscribe-block">
+      <p class="footer-subscribe-text">Subscribe and learn about new exercises!</p>
+      <form class="subscribe-form" data-subscribe-form>
+        <label class="visually-hidden" for="subscribe-email">Email</label>
+        <input
+          class="subscribe-input"
+          id="subscribe-email"
+          type="email"
+          name="email"
+          placeholder="Email"
+          required
+          pattern="^\w+(\.\w+)?@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
+        />
+        <button class="subscribe-btn" type="submit">Send</button>
+      </form>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">Your Energy. All rights reserved.</p>
+      <p class="footer-policy">Privacy Policy / Terms of Service</p>
+      <p class="footer-year">©2023</p>
+    </div>
+  </div>
+  <button class="scroll-up-btn" type="button" aria-label="Scroll to top" data-scroll-up>
+    <svg class="scroll-up-icon scroll-up-icon-default" width="40" height="40" aria-hidden="true">
+      <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C84vRwza.svg#arrow_to_the_top_small"></use>
+    </svg>
+    <svg class="scroll-up-icon scroll-up-icon-hover" width="40" height="40" aria-hidden="true">
+      <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C84vRwza.svg#arrow_to_the_top_large"></use>
+    </svg>
+  </button>
+</footer>
+
 
     <div class="loader" id="loader">
       <span class="loader__spinner"></span>
@@ -516,7 +714,7 @@
     <!-- Close button -->
     <button class="modal_close" type="button" data-modal-close>
       <svg class="modal_close_icon" width="24" height="24">
-        <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C6RHPniy.svg#discard_sign"></use>
+        <use href="/goit-advancedjs-finalproject-group_4/assets/icons-C84vRwza.svg#discard_sign"></use>
       </svg>
     </button>
 

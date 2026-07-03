@@ -1,47 +1,47 @@
-import{i as v,g as o,a as b,p as f}from"./assets/parseError-D19OIwGj.js";import{S as y}from"./assets/vendor-Ht0x2cLd.js";async function k(e){const{data:a}=await v.post("/subscription",{email:e});return a}const w=/^\w+(\.\w+)?@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;function C(){const e=document.querySelector("[data-subscribe-form]");if(!e)return;const a=e.elements.email,t=e.querySelector(".subscribe-btn");e.addEventListener("submit",async s=>{s.preventDefault();const d=a.value.trim();if(!w.test(d)){o(g("Please enter a valid email address.")),a.focus();return}p(t,!0);try{const r=await k(d);b((r==null?void 0:r.message)??"Thanks for subscribing!"),e.reset()}catch(r){o(g(r))}finally{p(t,!1)}})}function g(e){const{status:a,message:t}=f(e);switch(a){case 400:return t??"Invalid request. Please check your email.";case 404:return t??"Subscription service was not found.";case 409:return t??"This email is already subscribed.";case 500:return t??"Server error. Please try again later.";default:return t??"Something went wrong. Please try again later."}}function p(e,a){e.disabled=a,e.textContent=a?"Sending...":"Send"}async function R(e,a){try{const{result:t}=await v.patch(`/exercises/${e}/rating`,a);return b("Your rating is added successfully!"),t}catch(t){return o($(t)),null}}function $(e){const{status:a,message:t}=f(e);switch(a){case 400:return t??"Invalid request. Please check the rating data.";case 404:return t??"Such exercise was not found.";case 409:return t??"This email has already left a rating.";case 500:return t??"Server error. Please try again later.";default:return t??"Failed to add the rating."}}const n={modalExerciceOpenElem:document.querySelector("[data-exercice-modal-open]"),modalRatingOpenElem:null,modalCloseBtn:document.querySelector("[data-modal-close]"),overlay:document.querySelector(".overlay"),modalContainer:document.querySelector(".modal"),modalContent:document.querySelector(".modal_content"),starRatingSelect:null};let l=null,u={_id:"64f389465ae26083f39b17a2",bodyPart:"waist",equipment:"body weight",gifUrl:"https://ftp.goit.study/img/power-pulse/gifs/0001.gif",name:"3/4 sit-up",target:"abs",description:"This refers to your core muscles, which include the rectus abdominis, obliques, and transverse abdominis. They're essential for maintaining posture, stability, and generating force in many movements. Exercises that target the abs include crunches, leg raises, and planks.",rating:3.72,burnedCalories:220,popularity:34157};const L=({name:e,gifUrl:a,rating:t,target:s,bodyPart:d,equipment:r,popularity:x,burnedCalories:E,description:S})=>{const i=Math.round(t);return`<div class="modal_exercice">
+import{i as y,g as _,p as h,a as E}from"./assets/parseError-nq7fh1Bt.js";import{S as x}from"./assets/vendor-Ht0x2cLd.js";async function w(e){const{data:t}=await y.post("/subscription",{email:e});return t}const k=/^\w+(\.\w+)?@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;function b(e,t){return typeof e=="string"?e:e!=null&&e.message?e.message:e!=null&&e.error?e.error:t}function R(){const e=document.querySelector("[data-subscribe-form]");if(!e)return;const t=e.elements.email,a=e.querySelector(".subscribe-btn");e.addEventListener("submit",async i=>{var d,m;i.preventDefault();const c=t.value.trim();if(!k.test(c)){_(L("Please enter a valid email address.")),t.focus();return}f(a,!0);try{const n=await w(c);iziToast.success({title:"Success",message:b(n,"Subscription successful."),position:"topRight"}),e.reset()}catch(n){const u=(d=n==null?void 0:n.response)==null?void 0:d.status,r=b((m=n==null?void 0:n.response)==null?void 0:m.data,"Something went wrong. Please try again later.");iziToast[u===409?"warning":"error"]({title:u===409?"Warning":"Error",message:r,position:"topRight"})}finally{f(a,!1)}})}function L(e){const{status:t,message:a}=h(e);switch(t){case 400:return a??"Invalid request. Please check your email.";case 404:return a??"Subscription service was not found.";case 409:return a??"This email is already subscribed.";case 500:return a??"Server error. Please try again later.";default:return a??"Something went wrong. Please try again later."}}function f(e,t){e.disabled=t,e.textContent=t?"Sending...":"Send"}function C(){const e=document.querySelector("[data-scroll-up]");if(!e)return;const t=()=>{e.classList.toggle("is-visible",window.scrollY>300)};e.addEventListener("click",()=>{window.scrollTo({top:0,behavior:"smooth"})}),t(),window.addEventListener("scroll",t,{passive:!0})}async function $(e,t){try{const{result:a}=await y.patch(`/exercises/${e}/rating`,t);return E("Your rating is added successfully!"),a}catch(a){return _(q(a)),null}}function q(e){const{status:t,message:a}=h(e);switch(t){case 400:return a??"Invalid request. Please check the rating data.";case 404:return a??"Such exercise was not found.";case 409:return a??"This email has already left a rating.";case 500:return a??"Server error. Please try again later.";default:return a??"Failed to add the rating."}}const s={modalExerciceOpenElem:document.querySelector("[data-exercice-modal-open]"),modalRatingOpenElem:null,modalCloseBtn:document.querySelector("[data-modal-close]"),overlay:document.querySelector(".overlay"),modalContainer:document.querySelector(".modal"),modalContent:document.querySelector(".modal_content"),starRatingSelect:null};let o=null,p={_id:"64f389465ae26083f39b17a2",bodyPart:"waist",equipment:"body weight",gifUrl:"https://ftp.goit.study/img/power-pulse/gifs/0001.gif",name:"3/4 sit-up",target:"abs",description:"This refers to your core muscles, which include the rectus abdominis, obliques, and transverse abdominis. They're essential for maintaining posture, stability, and generating force in many movements. Exercises that target the abs include crunches, leg raises, and planks.",rating:3.72,burnedCalories:220,popularity:34157};const M=({name:e,gifUrl:t,rating:a,target:i,bodyPart:c,equipment:d,popularity:m,burnedCalories:n,description:u})=>{const r=Math.round(a);return`<div class="modal_exercice">
     <div class="modal_exercice_img_container">
       <img
         class="modal_exercice_img"
-        src="${a}"
+        src="${t}"
         alt="${e}"
       />
     </div>
     <div class="modal_exercice_data_container">
       <h2 class="modal_exercice_title">${e}</h2>
       <div class="modal_exercice_star_raiting_container">
-        <p class="modal_exercice_star_rating_number">${t}</p>
+        <p class="modal_exercice_star_rating_number">${a}</p>
         <select class="star-rating" disabled>
            <option value="">Select a rating</option>
-           <option value="5" ${i===5?"selected":""}>Excellent</option>
-           <option value="4" ${i===4?"selected":""}>Very Good</option>
-           <option value="3" ${i===3?"selected":""}>Average</option>
-           <option value="2" ${i===2?"selected":""}>Poor</option>
-           <option value="1" ${i===1?"selected":""}>Terrible</option>
+           <option value="5" ${r===5?"selected":""}>Excellent</option>
+           <option value="4" ${r===4?"selected":""}>Very Good</option>
+           <option value="3" ${r===3?"selected":""}>Average</option>
+           <option value="2" ${r===2?"selected":""}>Poor</option>
+           <option value="1" ${r===1?"selected":""}>Terrible</option>
         </select>
       </div>
       <ul class="modal_exercice_stats_block_list">
         <li class="modal_exercice_stats_block_list_item">
           Target
-          <span class="modal_exercice_stats_block_list_item_bold">${s}</span>
+          <span class="modal_exercice_stats_block_list_item_bold">${i}</span>
         </li>
         <li class="modal_exercice_stats_block_list_item">
           Body Part
-          <span class="modal_exercice_stats_block_list_item_bold">${d}</span>
+          <span class="modal_exercice_stats_block_list_item_bold">${c}</span>
         </li>
         <li class="modal_exercice_stats_block_list_item">
           Equipment
-          <span class="modal_exercice_stats_block_list_item_bold">${r}</span>
+          <span class="modal_exercice_stats_block_list_item_bold">${d}</span>
         </li>
         <li class="modal_exercice_stats_block_list_item">
           Popular
-          <span class="modal_exercice_stats_block_list_item_bold">${x}</span>
+          <span class="modal_exercice_stats_block_list_item_bold">${m}</span>
         </li>
         <li class="modal_exercice_stats_block_list_item">
           Burned Calories
-          <span class="modal_exercice_stats_block_list_item_bold">${E}</span>
+          <span class="modal_exercice_stats_block_list_item_bold">${n}</span>
         </li>
       </ul>
-      <p class="modal_exercice_description">${S}</p>
+      <p class="modal_exercice_description">${u}</p>
       <div class="modal_exercice_btn_container">
         <button class="modal_btn modal_exercice_btn_favorites" type="button">
           Add to favorites
@@ -54,7 +54,7 @@ import{i as v,g as o,a as b,p as f}from"./assets/parseError-D19OIwGj.js";import{
         </button>
       </div>
     </div>
-  </div>`},q=()=>`<form class="modal_rating">
+  </div>`},T=()=>`<form class="modal_rating">
         <h2 class="modal_rating_title">Rating</h2>
         <div class="modal_rating_star_raiting_container">
           <p class="modal_rating_star_rating_number">0.0</p>
@@ -83,5 +83,5 @@ import{i as v,g as o,a as b,p as f}from"./assets/parseError-D19OIwGj.js";import{
           placeholder="Your comment"
         ></textarea>
         <button class="modal_btn modal_rating_submit" type="submit">Send</button>
-      </form>`,c=e=>{if(e&&e.target.dataset.modalType!=="exercice")return;n.overlay.hidden=!1,n.modalContainer.classList.remove("modal-small"),n.modalContainer.classList.add("modal-large"),l="exercice";const a=L(u);n.modalContent.innerHTML=a,requestAnimationFrame(()=>{new y(".star-rating",{clearable:!1,maxStars:5}).rebuild()}),n.modalRatingOpenElem=document.querySelector("[data-rating-modal-open]"),n.modalRatingOpenElem.addEventListener("click",h)},h=()=>{n.overlay.hidden=!1,n.modalContainer.classList.remove("modal-large"),n.modalContainer.classList.add("modal-small"),l="rating";const e=q();n.modalContent.innerHTML=e,requestAnimationFrame(()=>{new y(".star-rating-active",{clearable:!1,maxStars:5}).rebuild()}),n.modalRatingOpenElem.removeEventListener("click",h),n.starRatingSelect=document.querySelector(".star-rating-active"),n.starRatingSelect.addEventListener("change",m)},_=()=>{if(l==="rating"){n.starRatingSelect.removeEventListener("change",m),c();return}n.overlay.hidden=!0},M=e=>{if(e.target===n.overlay){if(l==="rating"){n.starRatingSelect.removeEventListener("change",m),c();return}_()}},T=e=>{if(e.key==="Escape"){if(l==="rating"){n.starRatingSelect.removeEventListener("change",m),c();return}_()}},m=e=>{const a=e.target.value,t=n.modalContent.querySelector(".modal_rating_star_rating_number");t.textContent=`${a}.0`},P=async e=>{e.preventDefault(),u||o("Excercice is not found. Please, try one more time.");const a=new FormData(e.target),t={rate:Number(a.get("rate")),email:a.get("email"),review:a.get("review")};if(Object.values(t).some(s=>!s)){o("Please make sure that you had filled in all the values.");return}await R(u._id,t),c()};n.modalExerciceOpenElem.addEventListener("click",c);n.modalCloseBtn.addEventListener("click",_);n.overlay.addEventListener("click",M);n.modalContent.addEventListener("submit",P);document.addEventListener("keydown",T);C();
+      </form>`,l=e=>{if(e&&e.target.dataset.modalType!=="exercice")return;s.overlay.hidden=!1,s.modalContainer.classList.remove("modal-small"),s.modalContainer.classList.add("modal-large"),o="exercice";const t=M(p);s.modalContent.innerHTML=t,requestAnimationFrame(()=>{new x(".star-rating",{clearable:!1,maxStars:5}).rebuild()}),s.modalRatingOpenElem=document.querySelector("[data-rating-modal-open]"),s.modalRatingOpenElem.addEventListener("click",S)},S=()=>{s.overlay.hidden=!1,s.modalContainer.classList.remove("modal-large"),s.modalContainer.classList.add("modal-small"),o="rating";const e=T();s.modalContent.innerHTML=e,requestAnimationFrame(()=>{new x(".star-rating-active",{clearable:!1,maxStars:5}).rebuild()}),s.modalRatingOpenElem.removeEventListener("click",S),s.starRatingSelect=document.querySelector(".star-rating-active"),s.starRatingSelect.addEventListener("change",g)},v=()=>{if(o==="rating"){s.starRatingSelect.removeEventListener("change",g),l();return}s.overlay.hidden=!0},P=e=>{if(e.target===s.overlay){if(o==="rating"){s.starRatingSelect.removeEventListener("change",g),l();return}v()}},A=e=>{if(e.key==="Escape"){if(o==="rating"){s.starRatingSelect.removeEventListener("change",g),l();return}v()}},g=e=>{const t=e.target.value,a=s.modalContent.querySelector(".modal_rating_star_rating_number");a.textContent=`${t}.0`},D=async e=>{e.preventDefault(),p||_("Excercice is not found. Please, try one more time.");const t=new FormData(e.target),a={rate:Number(t.get("rate")),email:t.get("email"),review:t.get("review")};if(Object.values(a).some(i=>!i)){_("Please make sure that you had filled in all the values.");return}await $(p._id,a),l()};s.modalExerciceOpenElem.addEventListener("click",l);s.modalCloseBtn.addEventListener("click",v);s.overlay.addEventListener("click",P);s.modalContent.addEventListener("submit",D);document.addEventListener("keydown",A);R();C();
 //# sourceMappingURL=index.js.map
