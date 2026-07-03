@@ -4,6 +4,7 @@ import {
   favoritesStorage,
 } from '../lib/favorites-storage.js';
 import { renderExerciseCard } from './render-exercise-card.js';
+import { hideLoader, showLoader } from './loader.js';
 
 const SELECTORS = {
   root: '[data-favorites-root]',
@@ -43,9 +44,15 @@ export const initFavoritesPage = async () => {
     return;
   }
 
-  bindFavoritesEvents();
-  await renderQuote();
-  renderFavoritesState();
+  showLoader();
+
+  try {
+    bindFavoritesEvents();
+    await renderQuote();
+    renderFavoritesState();
+  } finally {
+    hideLoader();
+  }
 };
 
 const renderQuote = async () => {
