@@ -5,6 +5,7 @@ import {
 } from '../lib/favorites-storage.js';
 import { renderExerciseCard } from './render-exercise-card.js';
 import { hideLoader, showLoader } from './loader.js';
+import { initSubscription } from './subscription.js';
 
 const SELECTORS = {
   root: '[data-favorites-root]',
@@ -205,4 +206,5 @@ const renderFavoriteCard = exercise => {
 
 favoritesCardRenderer = renderFavoriteCard;
 
+initSubscription();
 initFavoritesPage();

@@ -85,7 +85,9 @@
   padding: 12px 14px;
   color: var(--color-dark);
   background-color: var(--color-light);
-  transition: opacity 200ms ease, transform 200ms ease;
+  transition:
+    opacity 200ms ease,
+    transform 200ms ease;
 }
 
 .subscribe-btn:hover,
@@ -102,8 +104,8 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   grid-template-areas:
-    "copy copy"
-    "policy year";
+    'copy copy'
+    'policy year';
   column-gap: 24px;
   row-gap: 10px;
   align-items: end;
@@ -146,9 +148,9 @@
   .footer-container {
     grid-template-columns: 156px 1fr;
     grid-template-areas:
-      "brand slogan"
-      "brand subscribe"
-      "bottom bottom";
+      'brand slogan'
+      'brand subscribe'
+      'bottom bottom';
     align-items: start;
     column-gap: 114px;
     row-gap: 0;
@@ -193,7 +195,7 @@
     grid-area: bottom;
     display: grid;
     grid-template-columns: 156px 1fr 64px;
-    grid-template-areas: "copy policy year";
+    grid-template-areas: 'copy policy year';
     column-gap: 114px;
     align-items: center;
     padding-top: 98px;
@@ -214,8 +216,8 @@
   .footer-container {
     grid-template-columns: 156px 595px 345px;
     grid-template-areas:
-      "brand slogan subscribe"
-      "bottom bottom bottom";
+      'brand slogan subscribe'
+      'bottom bottom bottom';
     column-gap: 72px;
   }
 
@@ -311,28 +313,48 @@
   font-style: italic;
 }
 
-/* Scroll up button */
 .scroll-up-btn {
   position: fixed;
   right: 20px;
   bottom: 20px;
   z-index: 900;
+
   display: inline-flex;
   width: 40px;
   height: 40px;
   align-items: center;
   justify-content: center;
+
   padding: 0;
   border: none;
   border-radius: 50%;
+  box-sizing: border-box;
   background-color: transparent;
   line-height: 0;
+
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
   transform: translateY(16px);
-  transition: opacity 200ms ease, visibility 200ms ease, transform 200ms ease;
+
+  transition:
+    opacity 200ms ease,
+    visibility 200ms ease,
+    transform 200ms ease;
 }
+
+.scroll-up-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+
+  border: 1px solid #f4f4f4;
+  border-radius: 50%;
+  box-sizing: border-box;
+
+  pointer-events: none;
+}
+
 
 .scroll-up-btn.is-visible {
   opacity: 1;
@@ -343,10 +365,7 @@
 
 .scroll-up-icon {
   position: absolute;
-  inset: 0;
   display: block;
-  width: 40px;
-  height: 40px;
   transition: opacity 200ms ease;
 }
 
@@ -408,8 +427,8 @@
   .footer-container {
     grid-template-columns: 156px 595px 345px;
     grid-template-areas:
-      "brand slogan subscribe"
-      "bottom bottom bottom";
+      'brand slogan subscribe'
+      'bottom bottom bottom';
     column-gap: 72px;
   }
 
