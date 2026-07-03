@@ -13,6 +13,7 @@ const FILTER_PARAM_MAP = {
 let currentFilter = DEFAULT_FILTER;
 let currentPage = 1;
 let currentExerciseParams = null;
+let currentKeyword = '';
 
 const refs = {
   categoriesContainer: document.querySelector('.categories-by-muscles'),
@@ -26,6 +27,7 @@ const refs = {
 };
 
 refs.categoriesList?.addEventListener('click', onCategoryCardClick);
+refs.searchForm?.addEventListener('submit', onSearchFormSubmit);
 
 export async function renderCategories({
                                          filter = currentFilter,
@@ -34,7 +36,9 @@ export async function renderCategories({
   currentFilter = filter;
   currentPage = page;
   currentExerciseParams = null;
+  currentKeyword = '';
 
+  resetSearchForm();
   showCategoriesView();
 
   const limit = getCategoriesLimit();
@@ -65,21 +69,28 @@ async function renderExercises({ page = 1 } = {}) {
   }
 
   const limit = getExercisesLimit();
-  const data = await getExercisesByCategory({
+  const requestParams = {
     ...currentExerciseParams,
     page,
     limit,
-  });
+  };
+
+  if (currentKeyword) {
+    requestParams.keyword = currentKeyword;
+  }
+
+  const data = await getExercisesByCategory(requestParams);
+  const exercises = data.results ?? [];
 
   showExercisesView();
 
-  refs.exercisesList.innerHTML = data.results
-    .map(exercise => renderExerciseCard(exercise))
-    .join('');
+  refs.exercisesList.innerHTML = exercises.length
+    ? exercises.map(exercise => renderExerciseCard(exercise)).join('')
+    : createEmptyExercisesMarkup();
 
   renderPagination({
     container: refs.paginationContainer,
-    page: Number(data.page),
+    page: Number(data.page || page),
     totalPages: data.totalPages,
     onPageChange: nextPage => {
       renderExercises({ page: nextPage });
@@ -104,8 +115,23 @@ function onCategoryCardClick(event) {
   currentExerciseParams = {
     [apiParam]: category,
   };
+  currentKeyword = '';
 
+  resetSearchForm();
   updateSelectedCategory(category);
+  renderExercises({ page: 1 });
+}
+
+function onSearchFormSubmit(event) {
+  event.preventDefault();
+
+  if (!currentExerciseParams) {
+    return;
+  }
+
+  const searchInput = refs.searchForm?.querySelector('input');
+  currentKeyword = searchInput?.value.trim() ?? '';
+
   renderExercises({ page: 1 });
 }
 
@@ -139,6 +165,14 @@ function createCategoriesMarkup(categories) {
     .join('');
 }
 
+function createEmptyExercisesMarkup() {
+  return `
+    <li class="exercises-empty">
+      No exercises found. Try another keyword.
+    </li>
+  `;
+}
+
 function showCategoriesView() {
   refs.categoriesContainer?.classList.remove('is-hidden');
   refs.exercisesContainer?.classList.add('is-hidden');
@@ -154,7 +188,7 @@ function showCategoriesView() {
 function showExercisesView() {
   refs.categoriesContainer?.classList.add('is-hidden');
   refs.exercisesContainer?.classList.remove('is-hidden');
-  refs.searchForm?.classList.add('is-hidden');
+  refs.searchForm?.classList.remove('is-hidden');
   refs.filtersSlash?.classList.remove('is-hidden');
   refs.selectedCategory?.classList.remove('is-hidden');
 }
@@ -165,6 +199,14 @@ function updateSelectedCategory(category) {
   }
 
   refs.selectedCategory.textContent = formatDisplayText(category);
+}
+
+function resetSearchForm() {
+  const searchInput = refs.searchForm?.querySelector('input');
+
+  if (searchInput) {
+    searchInput.value = '';
+  }
 }
 
 function getCategoriesLimit() {
