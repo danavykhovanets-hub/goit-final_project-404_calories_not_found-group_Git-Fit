@@ -7,8 +7,14 @@ import { subscribe } from '../api/requests/subscribe.js';
 import { EMAIL_REGEX } from '../constants/index.js';
 import { parseError } from '../lib/parseError.js';
 
+function getResponseMessage(data, fallback) {
+  if (typeof data === 'string') return data;
+  if (data?.message) return data.message;
+  if (data?.error) return data.error;
+  return fallback;
+}
+
 export function initSubscription() {
-  //TODO need to check correct form id for subscription
   const form = document.querySelector('[data-subscribe-form]');
   if (!form) return;
 
@@ -32,10 +38,24 @@ export function initSubscription() {
 
     try {
       const data = await subscribe(email);
-      generateSuccessToastMessage(data?.message ?? 'Thanks for subscribing!');
+      iziToast.success({
+        title: 'Success',
+        message: getResponseMessage(data, 'Subscription successful.'),
+        position: 'topRight',
+      });
       form.reset();
     } catch (error) {
-      generateErrorToastMessage(getErrorMessage(error));
+      const status = error?.response?.status;
+      const message = getResponseMessage(
+        error?.response?.data,
+        'Something went wrong. Please try again later.'
+      );
+
+      iziToast[status === 409 ? 'warning' : 'error']({
+        title: status === 409 ? 'Warning' : 'Error',
+        message,
+        position: 'topRight',
+      });
     } finally {
       setLoading(button, false);
     }
