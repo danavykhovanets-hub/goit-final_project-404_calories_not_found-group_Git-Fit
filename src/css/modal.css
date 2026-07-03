@@ -23,10 +23,21 @@
   color: var(--color-light);
 }
 
+.modal-large {
+  max-width: 704px;
+}
+
+.modal-small {
+  max-width: 430px;
+}
+
 @media only screen and (min-width: 768px) {
-  .modal {
-    width: 704px;
+  .modal-large {
     padding: 32px;
+  }
+
+  .modal-small {
+    padding: 40px;
   }
 }
 
@@ -148,7 +159,6 @@
 @media only screen and (min-width: 768px) {
   .modal_exercice_stats_block_list {
     gap: 16px;
-
     margin-bottom: 16px;
   }
 }
@@ -199,18 +209,28 @@
   }
 }
 
+.modal_btn {
+  padding: 12px 24px;
+  border-radius: 30px;
+  background-color: var(--color-dark);
+  color: var(--color-light);
+  border: 1px solid var(--color-light);
+}
+
+.modal_btn:hover,
+.modal_btn:focus {
+  background-color: var(--color-light);
+  color: var(--color-dark);
+  transition: var(--transition-hover);
+  transition-property: background-color, color;
+}
+
 .modal_exercice_btn_favorites {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 8px;
-
   flex: 1.5;
-  padding: 12px 24px;
-  border-radius: 30px;
-  background-color: var(--color-light);
-  color: var(--color-dark);
-  border: 1px solid var(--color-dark);
 }
 
 @media only screen and (min-width: 768px) {
@@ -236,10 +256,77 @@
 
 .modal_exercice_btn_rating {
   flex: 1;
-  padding: 12px 24px;
-  border-radius: 30px;
-  background-color: var(--color-dark);
-  color: var(--color-light);
-  border: 1px solid var(--color-light);
 }
 /* #endregion Exercice modal styles */
+
+/* #region Rating modal styles */
+.modal_rating_title {
+  margin-bottom: 8px;
+
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.5;
+  color: rgba(244, 244, 244, 0.4);
+}
+
+.modal_rating_star_raiting_container {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  margin-bottom: 20px;
+
+  --gl-star-size: 18px;
+}
+
+.modal_rating_input,
+.modal_rating_textarea {
+  display: block;
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #f4f4f4;
+  border-radius: 30px;
+
+  background-color: var(--color-dark);
+  color: rgba(244, 244, 244, 0.6);
+}
+
+.modal_rating_label {
+  position: relative;
+}
+
+.modal_rating_input {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.modal_rating_input:invalid {
+  border-color: rgb(255, 102, 102);
+}
+
+.modal_rating_input_error {
+  position: relative;
+  margin-left: 5px;
+  top: -5px;
+  color: transparent;
+  font-size: 12px;
+}
+
+.modal_rating_input:valid + .modal_rating_input_error {
+  color: transparent;
+}
+
+.modal_rating_input:invalid:not(:focus-within) + .modal_rating_input_error {
+  color: rgba(255, 102, 102, 0.8);
+}
+
+.modal_rating_textarea {
+  height: 93px;
+  margin-bottom: 20px;
+  border-radius: 15px;
+}
+
+.modal_rating_submit {
+  display: block;
+  width: 100%;
+}
+/* #endregion Rating modal styles */

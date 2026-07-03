@@ -1,5 +1,4 @@
-import iziToast from 'izitoast';
-import 'izitoast/dist/css/iziToast.min.css';
+import { generateErrorToastMessage } from '../js/toastMessages.js';
 
 import { getExerciseById } from '../api/requests/getExerciseById.js';
 import { parseError } from '../lib/parseError.js';
@@ -8,11 +7,7 @@ export async function loadExerciseById(id) {
   try {
     return await getExerciseById(id);
   } catch (error) {
-    iziToast.error({
-      title: 'Error',
-      message: getErrorMessage(error),
-      position: 'topRight',
-    });
+    generateErrorToastMessage(getErrorMessage(error));
     return null;
   }
 }

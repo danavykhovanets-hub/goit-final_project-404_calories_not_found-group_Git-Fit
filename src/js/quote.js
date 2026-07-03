@@ -1,5 +1,4 @@
-import iziToast from 'izitoast';
-import 'izitoast/dist/css/iziToast.min.css';
+import { generateErrorToastMessage } from '../js/toastMessages.js';
 
 import { getQuote } from '../api/requests/getQuote.js';
 import { StorageService } from '../lib/storage.js';
@@ -20,11 +19,7 @@ export async function getQuoteOfTheDay() {
     quoteStorage.save({ date: today, quote });
     return quote;
   } catch (error) {
-    iziToast.error({
-      title: 'Error',
-      message: getErrorMessage(error),
-      position: 'topRight',
-    });
+    generateErrorToastMessage(getErrorMessage(error));
     return null;
   }
 }

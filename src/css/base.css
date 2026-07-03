@@ -1,12 +1,15 @@
 :root {
   /* Colors */
   --color-dark: #242424;
-  --color-light: #F4F4F4;
+  --color-light: #f4f4f4;
   --color-white: #ffffff;
-  --color-star: #EEA10C;
+  --color-star: #eea10c;
 
   /* Typography */
   --font-main: 'DM Sans', sans-serif;
+
+  /* Transition animation */
+  --transition-hover: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
