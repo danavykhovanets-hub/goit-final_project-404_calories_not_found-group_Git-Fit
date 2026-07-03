@@ -264,9 +264,9 @@ const onRatingFormSubmit = async event => {
 // #endregion Rating form submit functionality
 
 // #region Adding global event listeners
-refs.modalExerciceOpenElem.addEventListener('click', onExerciceModalOpen);
-refs.modalCloseBtn.addEventListener('click', onModalClose);
-refs.overlay.addEventListener('click', onOverlayClick);
-refs.modalContent.addEventListener('submit', onRatingFormSubmit);
+refs.modalExerciceOpenElem?.addEventListener('click', onExerciceModalOpen);
+refs.modalCloseBtn?.addEventListener('click', onModalClose);
+refs.overlay?.addEventListener('click', onOverlayClick);
+refs.modalContent?.addEventListener('submit', onRatingFormSubmit);
 document.addEventListener('keydown', onEscapeKeyClick);
 // #endregion Adding global event listeners

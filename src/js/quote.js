@@ -24,6 +24,31 @@ export async function getQuoteOfTheDay() {
   }
 }
 
+export async function renderQuoteOfTheDay() {
+  const quoteTextEl = document.querySelector('[data-quote-text]');
+  const quoteAuthorEl = document.querySelector('[data-quote-author]');
+  const quoteAuthorLinkEl = document.querySelector('[data-quote-author-link]');
+
+  if (!quoteTextEl || !quoteAuthorEl) {
+    return;
+  }
+
+  const quote = await getQuoteOfTheDay();
+
+  if (!quote?.quote || !quote?.author) {
+    return;
+  }
+
+  quoteTextEl.textContent = quote.quote;
+  quoteAuthorEl.textContent = quote.author;
+
+  if (quoteAuthorLinkEl) {
+    quoteAuthorLinkEl.href = `https://www.google.com/search?q=${encodeURIComponent(
+      quote.author
+    )}`;
+  }
+}
+
 function getErrorMessage(error) {
   const { status, message } = parseError(error);
 
