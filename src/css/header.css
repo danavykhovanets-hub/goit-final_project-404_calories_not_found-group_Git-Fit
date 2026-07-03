@@ -160,26 +160,6 @@
   display: none;
 }
 
-.socials-link {
-  display: inline-flex;
-  width: 44px;
-  height: 44px;
-  align-items: center;
-  justify-content: center;
-  line-height: 0;
-  transition: transform 200ms ease, opacity 200ms ease;
-}
-
-.socials-link:hover,
-.socials-link:focus {
-  opacity: 0.8;
-  transform: translateY(-2px);
-}
-
-.socials-icon {
-  width: 44px;
-  height: 44px;
-}
 
 body.menu-open {
   overflow: hidden;
@@ -201,6 +181,8 @@ body.menu-open {
   }
 
   .header-nav {
+    width: 265px;
+    min-height: 52px;
     justify-content: center;
     padding: 8px;
     border-radius: 60px;
@@ -210,12 +192,14 @@ body.menu-open {
   .header-nav-list {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 4px;
   }
 
   .header-nav-link {
     padding: 6px 14px;
     color: var(--color-light);
+    white-space: nowrap;
   }
 
   .header-nav-link.is-active,
@@ -226,18 +210,30 @@ body.menu-open {
   }
 }
 
-/* Social icons state switch: default and focus/hover according to the layout */
+/* Social icons: 44 × 44 controls with separate inactive and hover/focus SVGs */
 .socials-link {
   position: relative;
+  display: inline-flex;
+  width: 44px;
+  height: 44px;
   flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid transparent;
   border-radius: 10px;
   outline: transparent;
+  transition: background-color 200ms ease, border-color 200ms ease;
 }
 
 .socials-icon {
   position: absolute;
-  inset: 0;
+  top: 50%;
+  left: 50%;
   display: block;
+  width: 28px;
+  height: 28px;
+  transform: translate(-50%, -50%);
   transition: opacity 200ms ease;
 }
 
@@ -249,44 +245,32 @@ body.menu-open {
   opacity: 0;
 }
 
-.socials-link:hover,
-.socials-link:focus {
-  opacity: 1;
-  transform: none;
+/* Header: light inactive state, dark hover/focus state */
+.socials-link-light {
+  border-color: rgba(36, 36, 36, 0.1);
+  background-color: transparent;
 }
 
-.socials-link:hover .socials-icon-default,
-.socials-link:focus .socials-icon-default,
-.socials-link:focus-visible .socials-icon-default {
-  opacity: 0;
-}
-
-.socials-link:hover .socials-icon-hover,
-.socials-link:focus .socials-icon-hover,
-.socials-link:focus-visible .socials-icon-hover {
-  opacity: 1;
-}
-
-/* Social icons: hover/focus uses the separate __hover symbols from icons.svg, not CSS color changes */
-.socials-link-light,
 .socials-link-light:hover,
 .socials-link-light:focus,
 .socials-link-light:focus-visible {
-  color: #242424;
+  border-color: rgba(36, 36, 36, 0.1);
+  background-color: rgba(36, 36, 36, 0.8);
 }
 
-.socials-link-dark,
+/* Footer and mobile menu: dark inactive state, light hover/focus state */
+.socials-link-dark {
+  color: var(--color-light);
+  border-color: rgba(244, 244, 244, 0.1);
+  background-color: transparent;
+}
+
 .socials-link-dark:hover,
 .socials-link-dark:focus,
 .socials-link-dark:focus-visible {
-  color: #f4f4f4;
-}
-
-.socials-link:hover,
-.socials-link:focus,
-.socials-link:focus-visible {
-  opacity: 1;
-  transform: none;
+  color: var(--color-dark);
+  border-color: rgba(244, 244, 244, 0.1);
+  background-color: var(--color-light);
 }
 
 .socials-link:hover .socials-icon-default,
@@ -299,4 +283,10 @@ body.menu-open {
 .socials-link:focus .socials-icon-hover,
 .socials-link:focus-visible .socials-icon-hover {
   opacity: 1;
+}
+
+/* Header uses the same shared .container horizontal paddings as main content. */
+.site-header,
+.header-container {
+  width: 100%;
 }

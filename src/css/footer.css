@@ -472,3 +472,30 @@
     content: ' ';
   }
 }
+
+/* Footer uses the same shared .container horizontal paddings as main content. */
+.site-footer,
+.footer-container {
+  width: 100%;
+}
+
+/* Desktop alignment: keep subscription block and year in the right column. */
+@media only screen and (min-width: 1440px) {
+  .footer-container {
+    grid-template-columns: 156px minmax(0, 1fr) 345px;
+    column-gap: 72px;
+  }
+
+  .footer-subscribe-block {
+    justify-self: end;
+  }
+
+  .footer-bottom {
+    grid-template-columns: 156px minmax(0, 1fr) 345px;
+    column-gap: 72px;
+  }
+
+  .footer-year {
+    justify-self: start;
+  }
+}
