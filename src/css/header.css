@@ -1,5 +1,8 @@
 .site-header {
-  padding: 20px 0 0;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  padding: 20px 0 20px;
   background-color: var(--color-light);
 }
 
@@ -168,6 +171,7 @@ body.menu-open {
 @media only screen and (min-width: 768px) {
   .site-header {
     padding-top: 24px;
+    padding-bottom: 24px;
   }
 
   .mobile-menu-open,

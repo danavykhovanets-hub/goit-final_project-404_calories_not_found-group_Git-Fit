@@ -14,25 +14,24 @@
     />
   </head>
   <body>
-    <load src="./partials/header.html" />
-
-    <main>
-      <load src="./partials/hero.html" />
-      <load src="./partials/filters.html" />
-      <load src="./partials/categories-and-quote.html" />
-    </main>
-    <load src="./partials/footer.html" />
-
-    <div class="loader" id="loader">
-      <span class="loader__spinner"></span>
+    <div class="page-wrapper">
+      <load src="./partials/header.html" />
+      <main>
+        <load src="./partials/hero.html" />
+        <load src="./partials/filters.html" />
+        <load src="./partials/categories-and-quote.html" />
+      </main>
+      <load src="./partials/footer.html" />
+      <div class="loader" id="loader">
+        <span class="loader__spinner"></span>
+      </div>
+      <!-- Modal window -->
+      <load src="./partials/modal.html" />
     </div>
+      <!-- Scripts -->
+      <script type="module" src="./js/header-entry.js"></script>
+      <script type="module" src="./main.js"></script>
+      <script type="module" src="/js/star-rating.min.js"></script>
 
-    <!-- Modal window -->
-    <load src="./partials/modal.html" />
-
-    <!-- Scripts -->
-    <script type="module" src="./js/header-entry.js"></script>
-    <script type="module" src="./main.js"></script>
-    <script type="module" src="/js/star-rating.min.js"></script>
   </body>
 </html>
