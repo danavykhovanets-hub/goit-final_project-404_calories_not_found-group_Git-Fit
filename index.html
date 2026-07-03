@@ -12,8 +12,8 @@
       rel="stylesheet"
     />
     <script type="module" crossorigin src="/goit-advancedjs-finalproject-group_4/assets/vendor-Ht0x2cLd.js"></script>
-    <script type="module" crossorigin src="/goit-advancedjs-finalproject-group_4/assets/main-Cd7xMNQi.js"></script>
-    <link rel="stylesheet" crossorigin href="/goit-advancedjs-finalproject-group_4/assets/main-q70vxyyt.css">
+    <script type="module" crossorigin src="/goit-advancedjs-finalproject-group_4/assets/main-DL_E4Ntt.js"></script>
+    <link rel="stylesheet" crossorigin href="/goit-advancedjs-finalproject-group_4/assets/main-CbRLGbDE.css">
     <link rel="stylesheet" crossorigin href="/goit-advancedjs-finalproject-group_4/assets/vendor-BK3fR81P.css">
   </head>
   <body>
@@ -101,7 +101,36 @@
     </button>
 
     <!-- Ancor for the modar data rendering -->
-    <div class="modal_content"></div>
+    <div class="modal_content">
+      <!-- TODO:Remove this code -->
+      <form class="modal_rating">
+        <h2 class="modal_rating_title">Rating</h2>
+        <div class="modal_rating_star_raiting_container">
+          <p class="modal_rating_star_rating_number">0.0</p>
+          <select class="star-rating">
+            <option value="">Select a rating</option>
+            <option value="5">Excellent</option>
+            <option value="4">Very Good</option>
+            <option value="3">Average</option>
+            <option value="2">Poor</option>
+            <option value="1">Terrible</option>
+          </select>
+        </div>
+        <input
+          class="modal_rating_input"
+          type="email"
+          name="email"
+          placeholder="Email"
+          pattern="^\w+(.\w+)?@[a-zA-Z_]+?.[a-zA-Z]{2,3}$"
+        />
+        <textarea
+          class="modal_rating_textarea"
+          name="comment"
+          placeholder="Your comment"
+        ></textarea>
+        <button class="modal_rating_submit" type="submit">Send</button>
+      </form>
+    </div>
   </div>
 </div>
 
