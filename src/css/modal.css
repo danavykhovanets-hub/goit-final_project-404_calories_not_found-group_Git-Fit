@@ -243,8 +243,32 @@
 .modal_exercice_btn_favorites_icon {
   width: 16px;
   height: 14px;
+}
+
+.favorites_icon_fill {
   fill: var(--color-light);
   stroke: var(--color-dark);
+  transition: var(--transition-hover);
+  transition-property: fill, stroke;
+}
+
+.favorites_icon_empty {
+  fill: var(--color-dark);
+  stroke: var(--color-light);
+  transition: var(--transition-hover);
+  transition-property: fill, stroke;
+}
+
+.modal_btn:hover .favorites_icon_fill,
+.modal_btn:focus .favorites_icon_fill {
+  stroke: var(--color-light);
+  fill: var(--color-dark);
+}
+
+.modal_btn:hover .favorites_icon_empty,
+.modal_btn:focus .favorites_icon_empty {
+  stroke: var(--color-dark);
+  fill: var(--color-light);
 }
 
 @media only screen and (min-width: 768px) {
