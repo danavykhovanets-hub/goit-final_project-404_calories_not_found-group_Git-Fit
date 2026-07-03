@@ -3,6 +3,7 @@ import 'izitoast/dist/css/iziToast.min.css';
 
 import { subscribe } from '../api/requests/subscribe.js';
 import { EMAIL_REGEX } from '../constants/index.js';
+import { parseError } from '../lib/parseError.js';
 
 function getResponseMessage(data, fallback) {
   if (typeof data === 'string') return data;
@@ -59,6 +60,23 @@ export function initSubscription() {
       setLoading(button, false);
     }
   });
+}
+
+function getErrorMessage(error) {
+  const { status, message } = parseError(error);
+
+  switch (status) {
+    case 400:
+      return message ?? 'Invalid request. Please check your email.';
+    case 404:
+      return message ?? 'Subscription service was not found.';
+    case 409:
+      return message ?? 'This email is already subscribed.';
+    case 500:
+      return message ?? 'Server error. Please try again later.';
+    default:
+      return message ?? 'Something went wrong. Please try again later.';
+  }
 }
 
 function setLoading(button, isLoading) {
