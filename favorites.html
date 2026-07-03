@@ -13,13 +13,14 @@
     />
     <script type="module" crossorigin src="/goit-advancedjs-finalproject-group_4/favorites.js"></script>
     <link rel="modulepreload" crossorigin href="/goit-advancedjs-finalproject-group_4/assets/vendor-Ht0x2cLd.js">
-    <link rel="modulepreload" crossorigin href="/goit-advancedjs-finalproject-group_4/assets/main-3vjXzRY1.js">
+    <link rel="modulepreload" crossorigin href="/goit-advancedjs-finalproject-group_4/assets/main-DoEYbWK4.js">
     <link rel="stylesheet" crossorigin href="/goit-advancedjs-finalproject-group_4/assets/vendor-BK3fR81P.css">
-    <link rel="stylesheet" crossorigin href="/goit-advancedjs-finalproject-group_4/assets/main-BZfkqzJ7.css">
+    <link rel="stylesheet" crossorigin href="/goit-advancedjs-finalproject-group_4/assets/main-B2cTju23.css">
   </head>
 
   <body class="favorites-page">
-    <header class="site-header">
+    <div class="page-wrapper">
+      <header class="site-header">
   <div class="container header-container">
     <a class="logo header-logo" href="./index.html" aria-label="Your Energy home">
       <svg class="logo-icon" width="132" height="14" aria-hidden="true">
@@ -138,8 +139,8 @@
   </div>
 </header>
 
-    <main>
-      <section class="favorites-section">
+      <main>
+        <section class="favorites-section">
   <div class="container favorites-section__container">
     <h1 class="favorites-section__title">Favorites</h1>
 
@@ -245,8 +246,8 @@
   </div>
 </section>
 
-    </main>
-    <footer class="site-footer">
+      </main>
+      <footer class="site-footer">
   <div class="container footer-container">
     <div class="footer-brand-block">
       <a class="logo footer-logo" href="./index.html" aria-label="Your Energy home">
@@ -326,11 +327,12 @@
   </button>
 </footer>
 
-    <div class="loader" id="loader">
-      <span class="loader__spinner"></span>
-    </div>
-    <!-- Modal window -->
-    <div class="overlay" hidden>
+      <div class="loader" id="loader">
+        <span class="loader__spinner"></span>
+      </div>
+
+      <!-- Modal window -->
+      <div class="overlay" hidden>
   <div class="modal">
     <!-- Close button -->
     <button class="modal_close" type="button" data-modal-close>
@@ -373,7 +375,7 @@
   </div>
 </div>
 
-
+    </div>
     <!-- Scripts -->
   </body>
 </html>
