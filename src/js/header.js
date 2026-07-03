@@ -7,6 +7,8 @@ export function initHeader() {
   setActiveNavLink(navLinks);
 
   if (!menu || !openBtn || !closeBtn) return;
+  if (menu.dataset.headerInitialized === 'true') return;
+  menu.dataset.headerInitialized = 'true';
 
   menu.setAttribute('inert', '');
 
