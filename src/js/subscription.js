@@ -1,8 +1,7 @@
 import {
   generateErrorToastMessage,
   generateSuccessToastMessage,
-} from '../js/toastMessages.js';
-
+} from './toastMessages.js';
 import { subscribe } from '../api/requests/subscribe.js';
 import { EMAIL_REGEX } from '../constants/index.js';
 import { parseError } from '../lib/parseError.js';
@@ -16,7 +15,9 @@ function getResponseMessage(data, fallback) {
 
 export function initSubscription() {
   const form = document.querySelector('[data-subscribe-form]');
-  if (!form) return;
+  if (!form || form.dataset.subscriptionInitialized === 'true') return;
+
+  form.dataset.subscriptionInitialized = 'true';
 
   const input = form.elements.email;
   const button = form.querySelector('.subscribe-btn');
@@ -27,9 +28,7 @@ export function initSubscription() {
     const email = input.value.trim();
 
     if (!EMAIL_REGEX.test(email)) {
-      generateErrorToastMessage(
-        getErrorMessage('Please enter a valid email address.')
-      );
+      generateErrorToastMessage('Please enter a valid email address.');
       input.focus();
       return;
     }
@@ -38,24 +37,14 @@ export function initSubscription() {
 
     try {
       const data = await subscribe(email);
-      iziToast.success({
-        title: 'Success',
-        message: getResponseMessage(data, 'Subscription successful.'),
-        position: 'topRight',
-      });
-      form.reset();
-    } catch (error) {
-      const status = error?.response?.status;
-      const message = getResponseMessage(
-        error?.response?.data,
-        'Something went wrong. Please try again later.'
+
+      generateSuccessToastMessage(
+        getResponseMessage(data, 'Subscription successful.')
       );
 
-      iziToast[status === 409 ? 'warning' : 'error']({
-        title: status === 409 ? 'Warning' : 'Error',
-        message,
-        position: 'topRight',
-      });
+      form.reset();
+    } catch (error) {
+      generateErrorToastMessage(getErrorMessage(error));
     } finally {
       setLoading(button, false);
     }
@@ -80,6 +69,8 @@ function getErrorMessage(error) {
 }
 
 function setLoading(button, isLoading) {
+  if (!button) return;
+
   button.disabled = isLoading;
   button.textContent = isLoading ? 'Sending...' : 'Send';
 }
