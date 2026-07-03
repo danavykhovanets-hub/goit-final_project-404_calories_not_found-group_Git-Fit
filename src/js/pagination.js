@@ -7,17 +7,33 @@ export function renderPagination({ container, page, totalPages, onPageChange }) 
     return;
   }
 
-  if (totalPages <= 1) {
+  const currentPage = Number(page);
+  const pagesTotal = Number(totalPages);
+
+  if (pagesTotal <= 1) {
     container.innerHTML = '';
     container.classList.add('is-hidden');
     container.onclick = null;
     return;
   }
 
-  const currentPage = Number(page);
-  const pages = getVisiblePages(currentPage, totalPages);
+  const pages = getVisiblePages(currentPage, pagesTotal);
 
-  container.innerHTML = pages
+  const prevButtonMarkup = createArrowButtonMarkup({
+    direction: 'prev',
+    page: currentPage - 1,
+    disabled: currentPage === 1,
+    label: 'Go to previous page',
+  });
+
+  const nextButtonMarkup = createArrowButtonMarkup({
+    direction: 'next',
+    page: currentPage + 1,
+    disabled: currentPage === pagesTotal,
+    label: 'Go to next page',
+  });
+
+  const pagesMarkup = pages
     .map(pageItem => {
       if (pageItem === 'dots') {
         return '<span class="home-pagination-dots">...</span>';
@@ -39,17 +55,34 @@ export function renderPagination({ container, page, totalPages, onPageChange }) 
     })
     .join('');
 
+  container.innerHTML = `${prevButtonMarkup}${pagesMarkup}${nextButtonMarkup}`;
   container.classList.remove('is-hidden');
 
   container.onclick = event => {
     const button = event.target.closest('[data-page]');
 
-    if (!button) {
+    if (!button || button.disabled) {
       return;
     }
 
     onPageChange(Number(button.dataset.page));
   };
+}
+
+function createArrowButtonMarkup({ direction, page, disabled, label }) {
+  return `
+    <button
+      type="button"
+      class="home-pagination-arrow home-pagination-arrow-${direction}"
+      data-page="${page}"
+      aria-label="${label}"
+      ${disabled ? 'disabled' : ''}
+    >
+      <svg class="home-pagination-arrow-icon" width="6" height="12" aria-hidden="true">
+        <use href="./img/icons.svg#pagination-arrow"></use>
+      </svg>
+    </button>
+  `;
 }
 
 function getVisiblePages(currentPage, totalPages) {
