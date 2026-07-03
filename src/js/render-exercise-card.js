@@ -71,6 +71,7 @@ export const renderExerciseCard = (exercise, options = {}) => {
               class="start-btn"
               data-action="${normalizedOptions.onStartAction}"
               data-exercise-id="${exercise._id}"
+              data-modal-type="exercice"
             >
               <span class="start-span">Start</span>
               <svg class="start-svg" aria-hidden="true">

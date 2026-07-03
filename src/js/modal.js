@@ -2,6 +2,7 @@ import StarRating from 'star-rating.js';
 import 'star-rating.js/dist/star-rating.min.css';
 import { generateErrorToastMessage } from './toastMessages.js';
 import { submitRating } from '../api/requests/addRating.js';
+import { getExerciseById } from '../api/requests/getExerciseById.js';
 
 const refs = {
   modalExerciceOpenElem: document.querySelector('[data-exercice-modal-open]'),
@@ -14,23 +15,8 @@ const refs = {
 };
 
 let currentModalType = null;
-// TODO: Replace temporary mock data.
-// Will be removed when the modal is switched to the favorites section.
 // TODO: Add logic for saving the excercice data to the local storage
-let currentExerciceData = {
-  _id: '64f389465ae26083f39b17a2',
-  bodyPart: 'waist',
-  equipment: 'body weight',
-  gifUrl: 'https://ftp.goit.study/img/power-pulse/gifs/0001.gif',
-  name: '3/4 sit-up',
-  target: 'abs',
-  description:
-    "This refers to your core muscles, which include the rectus abdominis, obliques, and transverse abdominis. They're essential for maintaining posture, stability, and generating force in many movements. Exercises that target the abs include crunches, leg raises, and planks.",
-  rating: 3.72,
-  burnedCalories: 220,
-  time: 3,
-  popularity: 34157,
-};
+let currentExerciceData = null;
 
 // #region HTML rendering functions
 const renderExerciceModal = ({
@@ -143,18 +129,35 @@ const renderRatingModal = () => {
 // #endregion  HTML rendering functions
 
 // #region Base modal opening functionality
-export const onExerciceModalOpen = event => {
-  if (event && event.target.dataset.modalType !== 'exercice') {
-    return;
+export const onExerciceModalOpen = async event => {
+  let exerciseId;
+  if (event) {
+    const button = event.target.closest('.start-btn');
+    if (!button) {
+      return;
+    }
+
+    const dataSet = button.dataset;
+    exerciseId = dataSet.exerciseId;
+    if (dataSet.modalType !== 'exercice' || !exerciseId) {
+      return;
+    }
   }
 
+  let exerciceModalContent;
+  if (!currentExerciceData) {
+    const exerciceData = await getExerciseById(exerciseId);
+    currentExerciceData = exerciceData;
+    exerciceModalContent = renderExerciceModal(exerciceData);
+  } else {
+    exerciceModalContent = renderExerciceModal(currentExerciceData);
+  }
+
+  refs.modalContent.innerHTML = exerciceModalContent;
   refs.overlay.hidden = false;
   refs.modalContainer.classList.remove('modal-small');
   refs.modalContainer.classList.add('modal-large');
   currentModalType = 'exercice';
-
-  const exerciceModalContent = renderExerciceModal(currentExerciceData);
-  refs.modalContent.innerHTML = exerciceModalContent;
 
   requestAnimationFrame(() => {
     const stars = new StarRating('.star-rating', {
