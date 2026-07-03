@@ -1,12 +1,17 @@
 import StarRating from 'star-rating.js';
 import 'star-rating.js/dist/star-rating.min.css';
-import { generateErrorToastMessage } from './toastMessages.js';
+import {
+  generateErrorToastMessage,
+  generateSuccessToastMessage,
+} from './toastMessages.js';
 import { submitRating } from '../api/requests/addRating.js';
 import { getExerciseById } from '../api/requests/getExerciseById.js';
+import { favoritesStorage } from '../lib/favorites-storage.js';
 
 const refs = {
   modalExerciceOpenElem: document.querySelector('[data-exercice-modal-open]'),
   modalRatingOpenElem: null,
+  modalAddToFavoritesElem: null,
   modalCloseBtn: document.querySelector('[data-modal-close]'),
   overlay: document.querySelector('.overlay'),
   modalContainer: document.querySelector('.modal'),
@@ -15,21 +20,22 @@ const refs = {
 };
 
 let currentModalType = null;
-// TODO: Add logic for saving the excercice data to the local storage
 let currentExerciceData = null;
 
 // #region HTML rendering functions
-const renderExerciceModal = ({
-  name,
-  gifUrl,
-  rating,
-  target,
-  bodyPart,
-  equipment,
-  popularity,
-  burnedCalories,
-  description,
-}) => {
+const renderExerciceModal = (exerciseData, isFavorite) => {
+  const {
+    name,
+    gifUrl,
+    rating,
+    target,
+    bodyPart,
+    equipment,
+    popularity,
+    burnedCalories,
+    description,
+  } = exerciseData;
+
   const selectedRating = Math.round(rating);
 
   const modalData = `<div class="modal_exercice">
@@ -77,9 +83,9 @@ const renderExerciceModal = ({
       </ul>
       <p class="modal_exercice_description">${description}</p>
       <div class="modal_exercice_btn_container">
-        <button class="modal_btn modal_exercice_btn_favorites" type="button">
-          Add to favorites
-          <svg class="modal_exercice_btn_favorites_icon" width="20" height="20">
+        <button class="modal_btn modal_exercice_btn_favorites" type="button" data-favorite>
+          ${isFavorite ? 'Favorite' : 'Add to favorites'}
+          <svg class="modal_exercice_btn_favorites_icon ${isFavorite ? 'favorites_icon_fill' : 'favorites_icon_empty'}" width="20" height="20">
             <use href="./img/icons.svg#heart"></use>
           </svg>
         </button>
@@ -148,10 +154,11 @@ export const onExerciceModalOpen = async event => {
   if (!currentExerciceData) {
     const exerciceData = await getExerciseById(exerciseId);
     currentExerciceData = exerciceData;
-    exerciceModalContent = renderExerciceModal(exerciceData);
-  } else {
-    exerciceModalContent = renderExerciceModal(currentExerciceData);
   }
+
+  const favoriteExercises = favoritesStorage.load([]);
+  const isFavorite = isAdded(currentExerciceData, favoriteExercises);
+  exerciceModalContent = renderExerciceModal(currentExerciceData, isFavorite);
 
   refs.modalContent.innerHTML = exerciceModalContent;
   refs.overlay.hidden = false;
@@ -169,6 +176,9 @@ export const onExerciceModalOpen = async event => {
 
   refs.modalRatingOpenElem = document.querySelector('[data-rating-modal-open]');
   refs.modalRatingOpenElem.addEventListener('click', onRatingModalOpen);
+
+  refs.modalAddToFavoritesElem = document.querySelector('[data-favorite]');
+  refs.modalAddToFavoritesElem.addEventListener('click', handleAddToFavorites);
 };
 
 export const onRatingModalOpen = () => {
@@ -189,6 +199,10 @@ export const onRatingModalOpen = () => {
   });
 
   refs.modalRatingOpenElem.removeEventListener('click', onRatingModalOpen);
+  refs.modalAddToFavoritesElem.removeEventListener(
+    'click',
+    handleAddToFavorites
+  );
 
   refs.starRatingSelect = document.querySelector('.star-rating-active');
   refs.starRatingSelect.addEventListener('change', onStarRatingSelect);
@@ -202,6 +216,7 @@ export const onModalClose = () => {
   }
 
   refs.overlay.hidden = true;
+  currentExerciceData = null;
 };
 
 const onOverlayClick = e => {
@@ -227,6 +242,31 @@ const onEscapeKeyClick = e => {
   }
 };
 // #endregion Base modal opening functionality
+
+// #region Modal exercise functionality
+const isAdded = (currentExercice, exercisesArray) =>
+  exercisesArray.some(exercise => exercise._id === currentExercice._id);
+
+const handleAddToFavorites = event => {
+  if (!currentExerciceData) {
+    return;
+  }
+
+  const currentExercises = favoritesStorage.load([]);
+
+  if (isAdded(currentExerciceData, currentExercises)) {
+    generateErrorToastMessage('This exercise is already added to favorites.');
+    return;
+  }
+
+  favoritesStorage.save([currentExerciceData, ...currentExercises]);
+  generateSuccessToastMessage('Successfully added to favorites!');
+
+  event.target.childNodes[0].textContent = 'Favorite';
+  event.target.childNodes[1].classList.remove('favorites_icon_empty');
+  event.target.childNodes[1].classList.add('favorites_icon_fill');
+};
+// #endregion Modal exercise functionality
 
 // #region Rating form submit functionality
 const onStarRatingSelect = event => {
