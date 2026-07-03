@@ -1,5 +1,7 @@
-import iziToast from 'izitoast';
-import 'izitoast/dist/css/iziToast.min.css';
+import {
+  generateErrorToastMessage,
+  generateSuccessToastMessage,
+} from '../js/toastMessages.js';
 
 import { subscribe } from '../api/requests/subscribe.js';
 import { EMAIL_REGEX } from '../constants/index.js';
@@ -25,11 +27,9 @@ export function initSubscription() {
     const email = input.value.trim();
 
     if (!EMAIL_REGEX.test(email)) {
-      iziToast.error({
-        title: 'Error',
-        message: 'Please enter a valid email address.',
-        position: 'topRight',
-      });
+      generateErrorToastMessage(
+        getErrorMessage('Please enter a valid email address.')
+      );
       input.focus();
       return;
     }

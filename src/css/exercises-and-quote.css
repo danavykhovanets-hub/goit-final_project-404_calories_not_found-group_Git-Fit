@@ -1,0 +1,770 @@
+
+.categories {
+    min-width: 320px;
+    max-width: 375px;
+    margin: 0 auto;
+    margin-bottom: 80px;
+    padding: 0 20px;
+}
+
+.categories-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.exercises-main-container {
+    display: grid;
+    grid-template-columns: 1fr;  
+}
+
+@media only screen and (min-width: 768px) {
+    .categories {
+        max-width: 768px;
+        margin: 0 auto;
+        margin-bottom: 100px;
+        padding: 0 32px;
+    } 
+}
+
+@media only screen and (min-width: 1440px) {
+    .categories {
+        max-width: 1440px;
+        margin: 0 auto;
+        margin-bottom: 132px;
+        padding: 0 32px;
+} 
+
+    .exercises-main-container {
+        grid-template-columns: 444px 1fr; 
+        column-gap: 32px;
+        align-items: start;
+        grid-template-areas: "sidebar main"
+    }
+}
+
+/* #region MUSCLES */
+
+.categories-by-muscles {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.categories-by-muscles-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.categories-by-muscles-item {
+    position: relative;
+    border-radius: 12px;
+    height: 225px;
+    max-width: 335px;
+    min-width: 280px;
+
+    transition: transform 0.25s ease;
+    cursor: pointer;
+    overflow: hidden
+}
+
+.categories-by-muscles-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    border-radius: 12px; 
+}
+
+.categories-by-muscles-item::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(17, 17, 17, 0.5), rgba(17, 17, 17, 0.5));
+    transition: background 0.25s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.category-card-wrapper {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    outline: none;
+    font: inherit;
+    color: inherit;
+}
+
+.category-card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.category-card-name {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1;
+    text-align: center;
+    color: #f4f4f4;
+}
+
+.categories-by-muscles-item:hover {
+    transform: scale(1.03);
+}
+
+.categories-by-muscles-item:hover::before {
+    background: linear-gradient(0deg, rgba(17, 17, 17, 0.35), rgba(17, 17, 17, 0.35));
+}
+
+.categories-by-muscles-item:active {
+    transform: scale(0.98);
+}
+
+.categories-by-muscles-item:active::before {
+    background: linear-gradient(0deg, rgba(232, 93, 4, 0.55), rgba(17, 17, 17, 0.6));
+}
+
+.category-card-wrapper:focus-visible {
+    outline: 2px solid #f4f4f4;
+    outline-offset: -4px;
+    border-radius: 12px;
+}
+
+.category-card-filter {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.5;
+    color: rgba(244, 244, 244, 0.4);
+}
+
+@media only screen and (min-width: 768px) {
+    .categories-by-muscles {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .categories-by-muscles-list {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: 225px;
+        row-gap: 32px;
+        column-gap: 14px;
+    }
+
+    .categories-by-muscles-item {
+        height: 225px;
+        min-width: 225px;
+        max-width: 225px;
+    }
+
+    .category-card-name {
+        font-size: 24px;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    .categories-by-muscles {
+        grid-area: main;
+    }    
+
+    .categories-by-muscles-list {
+        grid-auto-rows: 242px;
+        row-gap: 32px;
+        column-gap: 15px;
+    }
+
+    .categories-by-muscles-item {
+        height: 242px;
+        min-width: 290px;
+        max-width: 290px;
+    }
+}
+/* #endregion */
+
+/* #region PAGINATION*/
+/* марджини на пагінацію кинути*/
+/* #endregion */
+
+/* #region QUOTE AND MOTIVATION*/
+.quote-and-motivation-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;       
+}
+
+.quote {
+    position: relative;
+    display: flex;
+    gap: 18px;
+    background-color: #242424;
+    border-radius: 20px;
+    padding: 20px;
+    max-height: 280px;
+}
+
+.quote-text-wrapper {
+    position: relative;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+    margin-bottom: 16px;
+}
+
+.quote-text-wrapper::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 24px;
+    background: linear-gradient(to bottom, rgba(36, 36, 36, 0) 0%, #242424 100%);
+    pointer-events: none;
+}
+
+.quote-and-img {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.quote-man-svg-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    background-color: rgba(244, 244, 244, 0.2);
+    flex-shrink: 0;
+}
+
+.quote-man-svg {
+    width: 18px;
+    height: 20px;
+}
+
+.quote-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+    height: 100%;
+}
+
+.quote-title {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1;
+    color: #f4f4f4;
+    margin-bottom: 8px;
+}
+
+.quote-text {
+    height: 100%;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.28571;
+    color: rgba(244, 244, 244, 0.6);
+    margin-bottom: 16px;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    margin-bottom: 0;
+}
+
+.quote-text::-webkit-scrollbar {
+    display: none;
+}
+
+.quote-author {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.28571;
+    color: #f4f4f4;   
+    }
+
+.quote-author-link {
+    color: inherit;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.quote-author-link:hover {
+    opacity: 0.7;
+    text-decoration: underline;
+}
+
+.quote-marks-svg {
+    height: 20px;
+    width: 20px;   
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.quote-img {
+    border-radius: 20px;   
+    height: 242px; 
+    object-fit: cover;
+    object-position: 70%;
+}
+
+.motivation {
+    display: flex;
+    gap: 16px;
+    background: #fff;
+    border-radius: 20px;
+    max-height: 201px;
+    width: 100%;
+    padding: 20px 20px 40px;
+}
+
+.motivation-text-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.motivation-svg-wrap {
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    background-color: #242424;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.motivation-svg {
+    width: 20px;
+    height: 20px;   
+}
+
+.motivation-title {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1;
+    color: #242424;
+}
+
+.motivation-subtitle {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.28571;
+    color: rgba(36, 36, 36, 0.6);
+    margin-bottom: 16px;    
+}
+
+.motivation-text {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.28571;
+    color: #242424;  
+
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.motivation-text-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.motivation-text-wrapper::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 20px;   
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%); 
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.motivation-text-wrapper.is-hidden::after {
+    opacity: 0;
+}
+
+
+@media only screen and (min-width: 768px) {
+    .quote-and-motivation-wrapper {
+        gap: 32px;       
+    }
+
+    .quote-and-img {
+        display: flex;
+        gap: 16px;
+    }
+
+    .quote {
+        width: 400px;
+        gap: 16px;
+        padding: 40px;
+        height: 249px;
+    }
+
+    .quote-and-img {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+    }
+
+    .quote-title {
+        font-size: 24px;
+        line-height: 1.33;
+        margin-bottom: 6px;
+    }
+
+    .quote-text {
+        margin-bottom: 18px;
+    }
+
+    .quote-author {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+    .quote-marks-svg {
+        height: 24px;
+        width: 24px;   
+        top: 40px;
+        right: 40px;
+    }
+
+    .quote-img {
+        border-radius: 20px;
+        width: 288px;   
+        height: 249px; 
+        object-position: 50%;
+    }
+
+    .motivation {
+        max-height: 249px;
+        width: 400px;
+        padding: 40px 40px 50px;
+    }
+
+    .motivation-title {
+        font-size: 24px;
+        line-height: 1.33;
+    }
+
+    .motivation-subtitle {
+        margin-bottom: 20px;    
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    .quote-and-motivation-wrapper {
+        grid-area: sidebar;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;  
+        max-width: 444px;     
+    }
+
+    .quote {
+        width: 100%;
+        height: 242px;
+    }
+
+    .quote-and-img {
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    .quote-text {
+        margin-bottom: 8px;
+    }
+
+    .quote-img {
+        height: 242px;
+        width: 100%;
+    }
+
+    .motivation {
+        max-height: 315px;
+        min-height: 315px;
+        width: 100%;
+        padding: 40px;
+    }
+  
+    .motivation-text-wrapper::after {
+        display: none;
+    }
+}
+/* #endregion */
+
+/* #region EXERCISES CARD */
+
+.exercises {
+    display: flex;
+    flex-direction: column;    
+}
+
+.exercises-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.exercises-item {
+    display: flex;
+    width: 100%;
+    height: 141px;
+    padding: 16px;
+    background-color: #fff;
+    border-radius: 15px;
+}
+
+.exercise-card-wrapper {
+    width: 100%;
+}
+
+
+.exercise-card-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    align-items: center; 
+}
+
+.meta-group {
+    display: flex;
+    gap: 16px;
+}
+
+.start-btn {
+    border: none;
+    outline: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.28571;
+    color: #242424;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.2s ease;
+}
+
+.start-btn:hover {
+    transform: scale(1.08);
+}
+
+.start-btn:active {
+    transform: scale(0.92);
+    transition: transform 0.1s ease;
+}
+
+.start-btn:focus-visible {
+    outline: 2px solid #242424;
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
+.workout-span {
+    font-weight: 500;
+    font-size: 12px;
+    color: #242424;    
+    border: 1px solid #242424;
+    border-radius: 15px;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 8px;
+}
+
+.rating-subgroup {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    border: 1px solid rgba(36, 36, 36, 0.15);
+    background: rgba(36, 36, 36, 0.03);
+    padding: 4px 8px;
+    margin: 0;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+}
+
+.rating-subgroup:hover {
+    background-color: rgba(36, 36, 36, 0.08);
+    border-color: rgba(36, 36, 36, 0.25);
+}
+
+.rating-subgroup:active {
+    transform: scale(0.95);
+    background-color: rgba(36, 36, 36, 0.12);
+}
+
+.rating-subgroup:focus-visible {
+    outline: 2px solid #242424;
+    outline-offset: 2px;
+}
+
+.rating-span {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #242424;
+    
+}
+
+.rating-svg {
+    width: 13px;
+    height: 13px;
+}
+
+.human-svg-wrapper {
+    width: 24px;
+    height: 24px;
+    background-color:  #242424;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.human-svg {
+    width: 14px;
+    height: 16px;    
+}
+
+.start-svg {
+    width: 16px;
+    height: 16px;
+    stroke-width: 1.33;
+    stroke: #242424;
+    fill: none;
+}
+
+.exercise-card-name {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 16px;
+}
+.exercise-card-title {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1;
+    color: #242424;
+}
+
+.exercise-info {
+    display: grid;
+    grid-template-columns: minmax(0, max-content) max-content max-content; 
+    gap: 10px; 
+    width: 100%;
+}
+
+.exercise-info-item {
+    display: flex;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.5;
+    color: rgba(36, 36, 36, 0.4); 
+    min-width: 0;
+}
+
+.info-label {
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-right: 4px;
+}
+.info-value {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #242424; 
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    
+    scrollbar-width: none;   
+    -ms-overflow-style: none;  
+}
+
+.info-value::-webkit-scrollbar {
+    display: none;
+}
+
+@media only screen and (max-width: 374px) {
+    .exercise-info {
+        grid-template-columns: 1fr;
+        row-gap: 6px;
+    }
+
+    .exercise-info-item {
+        justify-content: space-between;
+    }
+
+    .exercises-item {
+        height: auto;
+        min-height: 141px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .exercises {
+        display: flex;
+        flex-direction: column;    
+    }
+
+    .exercises-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 141px;
+        row-gap: 32px;
+        column-gap: 15px;
+    }
+
+    .meta-group {
+        gap: 17px
+    }
+
+    .start-btn {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+    .exercise-card-name {
+        margin-bottom: 8px;
+    }
+
+    .exercise-card-title {
+        font-size: 24px;
+        line-height: 1.33;
+    }  
+}
+
+/* #endregion */
+
+/* #region TEST */
+/*.categories-by-muscles, */
+
+
+.categories-by-muscles {
+    display: none;
+}
+/* #endregion */

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Your Energy</title>
+    <title>Your Energy | Favorites</title>
     <link rel="stylesheet" href="./css/styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -13,15 +13,23 @@
       rel="stylesheet"
     />
   </head>
-  <body>
-    <load src="./partials/header.html" />
-    <main></main>
-    <load src="./partials/footer.html" />
 
+  <body class="favorites-page">
+    <load src="./partials/header.html" />
+    <main>
+      <load src="./partials/favorites-section.html" />
+    </main>
+    <load src="./partials/footer.html" />
     <div class="loader" id="loader">
       <span class="loader__spinner"></span>
     </div>
 
-    <script type="module" src="./main.js"></script>
+    <!-- Modal window -->
+    <load src="./partials/modal.html" />
+
+    <!-- Scripts -->
+    <script type="module" src="./js/header-entry.js"></script>
+    <script type="module" src="./js/favorites.js"></script>
+    <script type="module" src="/js/star-rating.min.js"></script>
   </body>
 </html>

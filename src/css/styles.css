@@ -6,7 +6,6 @@
 @import './footer.css';
 @import './hero.css';
 @import './filters.css';
-/* @import './exercises.css'; */
-/* @import './modal.css'; */
-/* @import './favorites.css'; */
-/* @import './quote.css'; */
+@import './favorites.css';
+@import './exercises-and-quote.css';
+@import './modal.css';
