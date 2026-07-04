@@ -136,7 +136,9 @@
   border-radius: 0;
   background: transparent;
   cursor: pointer;
-  transition: transform 0.15s ease, opacity 0.2s ease;
+  transition:
+    transform 0.15s ease,
+    opacity 0.2s ease;
 }
 
 .rating-subgroup:hover {
@@ -242,7 +244,6 @@
   overflow: hidden;
   font-weight: 400;
   font-size: var(--exercise-card-title-size);
-  line-height: var(--exercise-card-title-line-height);
   color: var(--exercise-card-text);
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -264,8 +265,8 @@
 
 @media only screen and (min-width: 375px) {
   .exercise-info {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: var(--exercise-card-info-gap);
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr) minmax(0, 0.8fr);
+    column-gap: var(--exercise-card-info-gap);
   }
 }
 
@@ -273,6 +274,7 @@
   display: flex;
   justify-content: space-between;
   min-width: 0;
+  overflow: hidden;
   font-weight: 400;
   font-size: var(--exercise-card-info-size);
   line-height: var(--exercise-card-info-line-height);
@@ -293,6 +295,8 @@
 
 .info-value {
   display: block;
+  flex: 1 1 auto;
+  min-width: 0;
   overflow: hidden;
   white-space: nowrap;
   font-weight: 400;
