@@ -97,6 +97,15 @@
 
 ![Favorites page](./README_assets/desktop_favorite-page.png)
 
+### 📱 Mobile
+
+<p align="center">
+  <img src="./README_assets/phone_home-page_header-and-hashtags.png" width="220">
+  <img src="./README_assets/phone_favorite-page_exercises-and-quote-of-the-day.png" width="220">
+  <img src="./README_assets/phone_exercises-page.png" width="220">
+  <img src="./README_assets/phone_side-menu.png" width="220">
+</p>
+
 ---
 
 ## 🔌 API
@@ -127,9 +136,3 @@ npm run dev
 ```bash
 npm run build
 ```
-
----
-
-## 📋 Статус проєкту
-
-Проєкт виконано відповідно до ТЗ курсу Advanced JavaScript (GoIT), базова версія (MVP) + додаткові бонусні фічі.
