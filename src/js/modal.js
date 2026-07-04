@@ -7,6 +7,7 @@ import {
 import { submitRating } from '../api/requests/addRating.js';
 import { getExerciseById } from '../api/requests/getExerciseById.js';
 import { favoritesStorage } from '../lib/favorites-storage.js';
+import { showLoader, hideLoader } from './loader.js';
 
 const refs = {
   modalExerciceOpenElem: document.querySelector('[data-exercice-modal-open]'),
@@ -136,49 +137,63 @@ const renderRatingModal = () => {
 
 // #region Base modal opening functionality
 export const onExerciceModalOpen = async event => {
-  let exerciseId;
-  if (event) {
-    const button = event.target.closest('.start-btn');
-    if (!button) {
-      return;
+  try {
+    let exerciseId;
+
+    showLoader();
+
+    if (event) {
+      const button = event.target.closest('.start-btn');
+      if (!button) {
+        return;
+      }
+
+      const dataSet = button.dataset;
+      exerciseId = dataSet.exerciseId;
+      if (dataSet.modalType !== 'exercice' || !exerciseId) {
+        return;
+      }
     }
 
-    const dataSet = button.dataset;
-    exerciseId = dataSet.exerciseId;
-    if (dataSet.modalType !== 'exercice' || !exerciseId) {
-      return;
+    let exerciceModalContent;
+    if (!currentExerciceData) {
+      const exerciceData = await getExerciseById(exerciseId);
+      currentExerciceData = exerciceData;
     }
-  }
 
-  let exerciceModalContent;
-  if (!currentExerciceData) {
-    const exerciceData = await getExerciseById(exerciseId);
-    currentExerciceData = exerciceData;
-  }
+    const favoriteExercises = favoritesStorage.load([]);
+    const isFavorite = isAdded(currentExerciceData, favoriteExercises);
+    exerciceModalContent = renderExerciceModal(currentExerciceData, isFavorite);
 
-  const favoriteExercises = favoritesStorage.load([]);
-  const isFavorite = isAdded(currentExerciceData, favoriteExercises);
-  exerciceModalContent = renderExerciceModal(currentExerciceData, isFavorite);
+    refs.modalContent.innerHTML = exerciceModalContent;
+    refs.overlay.hidden = false;
+    refs.modalContainer.classList.remove('modal-small');
+    refs.modalContainer.classList.add('modal-large');
+    currentModalType = 'exercice';
 
-  refs.modalContent.innerHTML = exerciceModalContent;
-  refs.overlay.hidden = false;
-  refs.modalContainer.classList.remove('modal-small');
-  refs.modalContainer.classList.add('modal-large');
-  currentModalType = 'exercice';
-
-  requestAnimationFrame(() => {
-    const stars = new StarRating('.star-rating', {
-      clearable: false,
-      maxStars: 5,
+    requestAnimationFrame(() => {
+      const stars = new StarRating('.star-rating', {
+        clearable: false,
+        maxStars: 5,
+      });
+      stars.rebuild();
     });
-    stars.rebuild();
-  });
 
-  refs.modalRatingOpenElem = document.querySelector('[data-rating-modal-open]');
-  refs.modalRatingOpenElem.addEventListener('click', onRatingModalOpen);
+    refs.modalRatingOpenElem = document.querySelector(
+      '[data-rating-modal-open]'
+    );
+    refs.modalRatingOpenElem.addEventListener('click', onRatingModalOpen);
 
-  refs.modalAddToFavoritesElem = document.querySelector('[data-favorite]');
-  refs.modalAddToFavoritesElem.addEventListener('click', handleAddToFavorites);
+    refs.modalAddToFavoritesElem = document.querySelector('[data-favorite]');
+    refs.modalAddToFavoritesElem.addEventListener(
+      'click',
+      handleAddToFavorites
+    );
+  } catch (error) {
+    generateErrorToastMessage(error);
+  } finally {
+    hideLoader();
+  }
 };
 
 export const onRatingModalOpen = () => {
@@ -274,35 +289,45 @@ const onStarRatingSelect = event => {
   const modalTextValueElem = refs.modalContent.querySelector(
     '.modal_rating_star_rating_number'
   );
-  modalTextValueElem.textContent = `${selectedRatingValue}.0`;
+
+  if (selectedRatingValue) {
+    modalTextValueElem.textContent = `${selectedRatingValue}.0`;
+  }
 };
 
 const onRatingFormSubmit = async event => {
-  event.preventDefault();
+  try {
+    event.preventDefault();
+    showLoader();
 
-  if (!currentExerciceData) {
-    generateErrorToastMessage(
-      'Excercice is not found. Please, try one more time.'
-    );
+    if (!currentExerciceData) {
+      generateErrorToastMessage(
+        'Excercice is not found. Please, try one more time.'
+      );
+    }
+
+    const formData = new FormData(event.target);
+    const validatedData = {
+      rate: Number(formData.get('rate')),
+      email: formData.get('email'),
+      review: formData.get('review'),
+    };
+
+    if (Object.values(validatedData).some(value => !value)) {
+      generateErrorToastMessage(
+        'Please make sure that you had filled in all the values.'
+      );
+      return;
+    }
+
+    await submitRating(currentExerciceData._id, validatedData);
+
+    onExerciceModalOpen();
+  } catch (error) {
+    generateErrorToastMessage(error);
+  } finally {
+    hideLoader();
   }
-
-  const formData = new FormData(event.target);
-  const validatedData = {
-    rate: Number(formData.get('rate')),
-    email: formData.get('email'),
-    review: formData.get('review'),
-  };
-
-  if (Object.values(validatedData).some(value => !value)) {
-    generateErrorToastMessage(
-      'Please make sure that you had filled in all the values.'
-    );
-    return;
-  }
-
-  await submitRating(currentExerciceData._id, validatedData);
-
-  onExerciceModalOpen();
 };
 // #endregion Rating form submit functionality
 

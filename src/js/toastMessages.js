@@ -11,12 +11,13 @@ export const generateErrorToastMessage = message => {
   });
 };
 
-export const generateSuccessToastMessage = message => {
+export const generateSuccessToastMessage = (message, params = {}) => {
   iziToast.success({
     message,
     position: 'topRight',
     backgroundColor: '#088b57',
     messageColor: '#fff',
     icon: '',
+    ...params,
   });
 };
