@@ -409,20 +409,7 @@
 
 @media only screen and (min-width: 1440px) {
   .favorites-layout.is-filled .favorites-exercises-list {
-    max-height: 748px;
-    overflow-y: auto;
-    padding-right: 8px;
     gap: 32px 16px;
-  }
-
-  .favorites-layout.is-filled .favorites-exercises-list::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  .favorites-layout.is-filled
-    .favorites-exercises-list::-webkit-scrollbar-thumb {
-    border-radius: 12px;
-    background-color: rgba(36, 36, 36, 0.2);
   }
 }
 
@@ -433,4 +420,13 @@
 .favorites-pagination {
   display: flex;
   justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+@media only screen and (min-width: 768px) {
+  .favorites-pagination {
+    margin-top: 32px;
+  }
 }
