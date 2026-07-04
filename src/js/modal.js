@@ -191,7 +191,7 @@ export const onExerciceModalOpen = async event => {
       handleAddToFavorites
     );
   } catch (error) {
-    generateErrorToastMessage(error);
+    console.log(error);
   } finally {
     hideLoader();
   }
@@ -321,11 +321,16 @@ const onRatingFormSubmit = async event => {
       return;
     }
 
-    await submitRating(currentExerciceData._id, validatedData);
+    const { status } = await submitRating(
+      currentExerciceData._id,
+      validatedData
+    );
 
-    onExerciceModalOpen();
+    if (status === 200) {
+      onExerciceModalOpen();
+    }
   } catch (error) {
-    generateErrorToastMessage(error);
+    console.log(error);
   } finally {
     hideLoader();
   }

@@ -9,7 +9,7 @@ import { parseError } from '../../lib/parseError';
 // data: { rate: number, email: string, review: string }
 export async function submitRating(id, data) {
   try {
-    const { result } = await instance.patch(`/exercises/${id}/rating`, data);
+    const result = await instance.patch(`/exercises/${id}/rating`, data);
 
     generateSuccessToastMessage('Your rating is added successfully!');
     return result;
