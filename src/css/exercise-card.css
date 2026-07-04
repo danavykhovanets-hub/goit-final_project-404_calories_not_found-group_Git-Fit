@@ -131,31 +131,6 @@
   gap: var(--exercise-card-rating-gap);
   padding: 5px;
   margin: 0;
-  border: 1px solid var(--exercise-card-soft-border);
-  border-radius: 999px;
-  background-color: rgba(36, 36, 36, 0.03);
-  cursor: pointer;
-  transition:
-    transform 0.15s ease,
-    opacity 0.2s ease;
-}
-
-.rating-subgroup:hover {
-  background-color: rgba(36, 36, 36, 0.07);
-  border-color: rgba(36, 36, 36, 0.25);
-}
-
-.rating-subgroup:active {
-  transform: scale(0.93);
-  background-color: rgba(36, 36, 36, 0.12);
-  border-color: rgba(36, 36, 36, 0.3);
-  transition: transform 0.1s ease, background-color 0.1s ease;
-}
-
-.rating-subgroup:focus-visible {
-  outline: 2px solid var(--exercise-card-text);
-  outline-offset: 2px;
-  border-radius: var(--exercise-card-outline-radius);
 }
 
 .rating-span {

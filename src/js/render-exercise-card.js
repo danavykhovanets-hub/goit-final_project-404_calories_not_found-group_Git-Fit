@@ -29,7 +29,7 @@ const renderMetaControl = (exercise, options) => {
   const rating = Number(exercise.rating ?? 0).toFixed(1);
 
   return `
-    <button
+    <div
       type="button"
       class="rating-subgroup"
       aria-label="Rate this exercise"
@@ -40,7 +40,7 @@ const renderMetaControl = (exercise, options) => {
       <svg class="rating-svg" aria-hidden="true">
         <use href="${iconsUrl}#star_yellow"></use>
       </svg>
-    </button>
+    </div>
   `;
 };
 
