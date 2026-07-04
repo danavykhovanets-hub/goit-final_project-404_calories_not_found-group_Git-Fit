@@ -100,10 +100,10 @@
 ### 📱 Mobile
 
 <p align="center">
-  <img src="./README_assets/phone_home-page_header-and-hashtags.png" width="220">
-  <img src="./README_assets/phone_favorite-page_exercises-and-quote-of-the-day.png" width="220">
-  <img src="./README_assets/phone_exercises-page.png" width="220">
-  <img src="./README_assets/phone_side-menu.png" width="220">
+  <img src="./README_assets/phone_home-page_header-and-hashtags.png" width="200">
+  <img src="./README_assets/phone_favorite-page_exercises-and-quote-of-the-day.png" width="200">
+  <img src="./README_assets/phone_exercises-page.png" width="200">
+  <img src="./README_assets/phone_side-menu.png" width="200">
 </p>
 
 ---
