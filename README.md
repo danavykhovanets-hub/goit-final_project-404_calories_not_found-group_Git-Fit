@@ -6,15 +6,6 @@
 
 🔗 **Живий сайт:** [danavykhovanets-hub.github.io/goit-advancedjs-finalproject-group_4](https://danavykhovanets-hub.github.io/goit-advancedjs-finalproject-group_4/)
 
-📸 **Скріншоти:**
-
-<!-- TODO: додати скріншоти після фінального верстання
-![Home page](./screenshots/home-desktop.png)
-![Modal window](./screenshots/modal.png)
-![Favorites page](./screenshots/favorites.png)
--->
-_Скріншоти будуть додані найближчим часом._
-
 ---
 
 ## 👥 Команда GitFit
@@ -81,6 +72,30 @@ _Скріншоти будуть додані найближчим часом._
 ### 🎁 Бонусні фічі (поза базовим ТЗ)
 - Скролінг довгих цитат у блоці "Quote of the day" з фіксованою висотою
 - Хештеги в Hero-секції (#Sport, #Healthy, #Workout, #Diet) та автор цитати — клікабельні посилання, що ведуть на відповідний пошук у Google
+
+---
+
+## 📸 Скріншоти
+
+### 🖥 Desktop
+
+**Home Page**
+
+![Header + hashtags](./README_assets/desktop_home-page_header-and-hashtags.webp)
+
+![Quote of the day + filters](./README_assets/desktop_home-page_exercise-section_quote-of-the-day-and-filters.webp)
+
+![Footer + subscription](./README_assets/desktop_home-page_footer-and-subscription.png)
+
+**Модальне вікно вправи**
+
+![Exercise modal](./README_assets/desktop_modal-window_exercise.webp)
+
+![Rating modal](./README_assets/desktop_modal-window_rating.webp)
+
+**Favorites Page**
+
+![Favorites page](./README_assets/desktop_favorite-page.png)
 
 ---
 
