@@ -347,13 +347,19 @@
 .scroll-up-btn::before {
   content: '';
   position: absolute;
-  inset: 0;
+  inset: -1px;
 
   border: 1px solid #f4f4f4;
   border-radius: 50%;
   box-sizing: border-box;
 
+  opacity: 0;
   pointer-events: none;
+  transition: opacity 200ms ease;
+}
+
+.scroll-up-btn.is-on-footer::before {
+  opacity: 1;
 }
 
 .scroll-up-btn.is-visible {
