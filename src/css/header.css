@@ -1,7 +1,7 @@
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 999;
+  z-index: 10;
   padding: 20px 0 20px;
   background-color: var(--color-light);
 }
@@ -74,7 +74,7 @@
 .mobile-menu {
   position: fixed;
   inset: 0;
-  z-index: 1000;
+  z-index: 10;
   display: flex;
   width: 100%;
   min-height: 100vh;
@@ -86,7 +86,10 @@
   visibility: hidden;
   pointer-events: none;
   transform: translateX(100%);
-  transition: opacity 250ms ease, visibility 250ms ease, transform 250ms ease;
+  transition:
+    opacity 250ms ease,
+    visibility 250ms ease,
+    transform 250ms ease;
 }
 
 .mobile-menu.is-open {
@@ -136,7 +139,9 @@
   border-radius: 30px;
   font-size: 14px;
   line-height: 1.28;
-  transition: color 200ms ease, background-color 200ms ease;
+  transition:
+    color 200ms ease,
+    background-color 200ms ease;
 }
 
 .mobile-nav-link {
@@ -162,7 +167,6 @@
 .socials-list.header-socials {
   display: none;
 }
-
 
 body.menu-open {
   overflow: hidden;
@@ -227,7 +231,9 @@ body.menu-open {
   border: 1px solid transparent;
   border-radius: 10px;
   outline: transparent;
-  transition: background-color 200ms ease, border-color 200ms ease;
+  transition:
+    background-color 200ms ease,
+    border-color 200ms ease;
 }
 
 .socials-icon {
