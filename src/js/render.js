@@ -28,6 +28,19 @@ const refs = {
 
 refs.categoriesList?.addEventListener('click', onCategoryCardClick);
 refs.searchForm?.addEventListener('submit', onSearchFormSubmit);
+refs.exercisesList?.addEventListener(
+  'wheel',
+  event => {
+    const item = event.target.closest('.exercise-info-item');
+    if (!item) return;
+
+    if (item.scrollWidth > item.clientWidth) {
+      event.preventDefault();
+      item.scrollLeft += event.deltaY;
+    }
+  },
+  { passive: false }
+);
 
 export async function renderCategories({
                                          filter = currentFilter,

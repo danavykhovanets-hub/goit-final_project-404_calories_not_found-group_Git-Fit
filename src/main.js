@@ -4,6 +4,7 @@ import { initSubscription } from './js/subscription.js';
 import { initPagination } from './js/pagination.js';
 import { renderQuoteOfTheDay } from './js/quote.js';
 import { initScrollUp } from './js/scroll-up.js';
+import { initScrollFade } from './js/scroll-fade.js';
 import { initFooterYear } from './js/footer-year.js';
 
 import './js/modal.js';
@@ -21,4 +22,5 @@ initSubscription();
 initPagination();
 renderQuoteOfTheDay();
 initScrollUp();
+initScrollFade('.motivation-text-wrapper', '.motivation-text');
 initFooterYear();

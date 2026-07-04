@@ -108,3 +108,5 @@ export const renderExerciseCard = (exercise, options = {}) => {
     </li>
   `;
 };
+
+const exercisesList = document.querySelector('.exercises-list');

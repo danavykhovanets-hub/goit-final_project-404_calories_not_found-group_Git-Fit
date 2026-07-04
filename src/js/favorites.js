@@ -7,11 +7,13 @@ import { renderExerciseCard } from './render-exercise-card.js';
 import { renderPagination } from './pagination.js';
 import { hideLoader, showLoader } from './loader.js';
 import { initSubscription } from './subscription.js';
+import { initScrollFade } from './scroll-fade.js';
 
 const SELECTORS = {
   root: '[data-favorites-root]',
   quoteText: '[data-quote-text]',
   quoteAuthor: '[data-quote-author]',
+  quoteAuthorLink: '[data-quote-author-link]',
   emptyState: '[data-empty-state]',
   listSection: '[data-list-section]',
   list: '[data-favorites-list]',
@@ -48,15 +50,25 @@ export const initFavoritesPage = async () => {
 const renderQuote = async () => {
   const quoteTextEl = document.querySelector(SELECTORS.quoteText);
   const quoteAuthorEl = document.querySelector(SELECTORS.quoteAuthor);
+  const quoteAuthorLinkEl = document.querySelector(SELECTORS.quoteAuthorLink);
 
   if (!quoteTextEl || !quoteAuthorEl) {
     return;
   }
 
   const quote = (await getQuoteOfTheDay()) ?? FALLBACK_QUOTE;
+  const author = quote.author ?? FALLBACK_QUOTE.author;
 
   quoteTextEl.textContent = quote.quote ?? FALLBACK_QUOTE.quote;
-  quoteAuthorEl.textContent = quote.author ?? FALLBACK_QUOTE.author;
+  quoteAuthorEl.textContent = author;
+  
+    if (quoteAuthorLinkEl) {
+    quoteAuthorLinkEl.href = `https://www.google.com/search?q=${encodeURIComponent(
+      author
+    )}`;
+  }
+
+  initScrollFade('.favorites-quote__text-wrapper', '.favorites-quote__text');
 };
 
 const renderFavoritesState = () => {
@@ -132,6 +144,22 @@ const bindFavoritesEvents = () => {
   }
 
   list.dataset.bound = 'true';
+
+  list.addEventListener(
+    'wheel',
+    event => {
+      const item = event.target.closest('.exercise-info-item');
+      if (!item) {
+        return;
+      }
+
+      if (item.scrollWidth > item.clientWidth) {
+        event.preventDefault();
+        item.scrollLeft += event.deltaY;
+      }
+    },
+    { passive: false }
+  );
 
   list.addEventListener('click', event => {
     const removeButton = event.target.closest(
