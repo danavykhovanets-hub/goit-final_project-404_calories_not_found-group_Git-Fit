@@ -8,6 +8,7 @@ import { submitRating } from '../api/requests/addRating.js';
 import { getExerciseById } from '../api/requests/getExerciseById.js';
 import { favoritesStorage } from '../lib/favorites-storage.js';
 import { showLoader, hideLoader } from './loader.js';
+import iconsSprite from '../img/icons.svg';
 
 const refs = {
   modalExerciceOpenElem: document.querySelector('[data-exercice-modal-open]'),
@@ -87,7 +88,7 @@ const renderExerciceModal = (exerciseData, isFavorite) => {
         <button class="modal_btn modal_exercice_btn_favorites" type="button" data-favorite>
           ${isFavorite ? 'Favorite' : 'Add to favorites'}
           <svg class="modal_exercice_btn_favorites_icon ${isFavorite ? 'favorites_icon_fill' : 'favorites_icon_empty'}" width="20" height="20">
-            <use href="./img/icons.svg#heart"></use>
+            <use href="${iconsSprite}#heart"></use>
           </svg>
         </button>
         <button class="modal_btn modal_exercice_btn_rating" type="button" data-rating-modal-open>
