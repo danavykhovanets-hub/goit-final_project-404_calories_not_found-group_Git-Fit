@@ -4,6 +4,7 @@ import {
   favoritesStorage,
 } from '../lib/favorites-storage.js';
 import { renderExerciseCard } from './render-exercise-card.js';
+import { renderPagination } from './pagination.js';
 import { hideLoader, showLoader } from './loader.js';
 import { initSubscription } from './subscription.js';
 
@@ -23,22 +24,10 @@ const FALLBACK_QUOTE = {
   author: 'Tom Brady',
 };
 
+const FAVORITES_PAGE_SIZE = 10;
+
 let favoritesCardRenderer = null;
-let favoritesPaginationRenderer = null;
-
-export const setFavoritesCardRenderer = renderer => {
-  if (typeof renderer === 'function') {
-    favoritesCardRenderer = renderer;
-    renderFavoritesState();
-  }
-};
-
-export const setFavoritesPaginationRenderer = renderer => {
-  if (typeof renderer === 'function') {
-    favoritesPaginationRenderer = renderer;
-    renderFavoritesState();
-  }
-};
+let currentPage = 1;
 
 export const initFavoritesPage = async () => {
   if (!document.querySelector(SELECTORS.root)) {
@@ -83,6 +72,9 @@ const renderFavoritesState = () => {
 
   const favorites = getStoredFavorites();
   const hasFavorites = favorites.length > 0;
+  const totalPages = Math.ceil(favorites.length / FAVORITES_PAGE_SIZE);
+
+  currentPage = hasFavorites ? Math.min(currentPage, totalPages) : 1;
 
   root.classList.toggle('is-empty', !hasFavorites);
   root.classList.toggle('is-filled', hasFavorites);
@@ -97,7 +89,12 @@ const renderFavoritesState = () => {
     return;
   }
 
-  list.innerHTML = favorites
+  const paginatedFavorites = favorites.slice(
+    (currentPage - 1) * FAVORITES_PAGE_SIZE,
+    currentPage * FAVORITES_PAGE_SIZE
+  );
+
+  list.innerHTML = paginatedFavorites
     .map(exercise =>
       favoritesCardRenderer(exercise, {
         onStartAction: 'favorite-exercise:start',
@@ -108,29 +105,23 @@ const renderFavoritesState = () => {
 
   renderPaginationSlot({
     paginationSlot,
+    page: currentPage,
     totalItems: favorites.length,
   });
 };
 
-const renderPaginationSlot = ({ paginationSlot, totalItems }) => {
+const renderPaginationSlot = ({ paginationSlot, page, totalItems }) => {
   paginationSlot.innerHTML = '';
 
-  if (typeof favoritesPaginationRenderer !== 'function') {
-    paginationSlot.classList.add('is-hidden');
-    return;
-  }
-
-  favoritesPaginationRenderer({
+  renderPagination({
     container: paginationSlot,
-    totalItems,
-    pageSize: totalItems,
-    currentPage: 1,
+    page,
+    totalPages: Math.ceil(totalItems / FAVORITES_PAGE_SIZE),
+    onPageChange: nextPage => {
+      currentPage = nextPage;
+      renderFavoritesState();
+    },
   });
-
-  paginationSlot.classList.toggle(
-    'is-hidden',
-    paginationSlot.childElementCount === 0 && !paginationSlot.textContent.trim()
-  );
 };
 
 const bindFavoritesEvents = () => {
