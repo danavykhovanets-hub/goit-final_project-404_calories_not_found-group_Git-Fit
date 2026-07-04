@@ -13,11 +13,10 @@
   --exercise-card-meta-gap: 16px;
   --exercise-card-name-gap: 16px;
   --exercise-card-info-gap: 10px;
-  --exercise-card-info-row-gap-mobile: 6px;
   --exercise-card-title-size: 20px;
-  --exercise-card-title-line-height: 1;
+  --exercise-card-title-line-height: 1.2;
   --exercise-card-title-tablet-size: 24px;
-  --exercise-card-title-tablet-line-height: 1.33;
+  --exercise-card-title-tablet-line-height: 1.4;
   --exercise-card-start-size: 14px;
   --exercise-card-start-line-height: 1.28571;
   --exercise-card-start-tablet-size: 16px;
@@ -130,21 +129,25 @@
   display: flex;
   align-items: center;
   gap: var(--exercise-card-rating-gap);
-  padding: 0;
+  padding: 5px;
   margin: 0;
-  border: none;
-  border-radius: 0;
-  background: transparent;
+  border: 1px solid var(--exercise-card-soft-border);
+  border-radius: 999px;
+  background-color: rgba(36, 36, 36, 0.03);
   cursor: pointer;
   transition: transform 0.15s ease, opacity 0.2s ease;
 }
 
 .rating-subgroup:hover {
-  opacity: 0.75;
+  background-color: rgba(36, 36, 36, 0.07);
+  border-color: rgba(36, 36, 36, 0.25);
 }
 
 .rating-subgroup:active {
-  transform: scale(0.95);
+  transform: scale(0.93);
+  background-color: rgba(36, 36, 36, 0.12);
+  border-color: rgba(36, 36, 36, 0.3);
+  transition: transform 0.1s ease, background-color 0.1s ease;
 }
 
 .rating-subgroup:focus-visible {
@@ -248,6 +251,10 @@
   white-space: nowrap;
 }
 
+.exercise-card-title::first-letter {
+  text-transform: uppercase;
+}
+
 @media only screen and (min-width: 768px) {
   .exercise-card-title {
     font-size: var(--exercise-card-title-tablet-size);
@@ -256,27 +263,35 @@
 }
 
 .exercise-info {
-  display: grid;
-  grid-template-columns: 1fr;
-  row-gap: var(--exercise-card-info-row-gap-mobile);
+  display: flex;
+  flex-direction: column;
+  gap: var(--exercise-card-info-gap);
   width: 100%;
 }
 
 @media only screen and (min-width: 375px) {
   .exercise-info {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: var(--exercise-card-info-gap);
+    flex-direction: row;
+    flex-wrap: nowrap;
   }
 }
 
 .exercise-info-item {
   display: flex;
-  justify-content: space-between;
   min-width: 0;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   font-weight: 400;
   font-size: var(--exercise-card-info-size);
   line-height: var(--exercise-card-info-line-height);
   color: var(--exercise-card-muted-text);
+  flex: 1 1 auto;
+}
+
+.exercise-info-item::-webkit-scrollbar {
+  display: none;
 }
 
 @media only screen and (min-width: 375px) {
@@ -292,12 +307,9 @@
 }
 
 .info-value {
-  display: block;
-  overflow: hidden;
   white-space: nowrap;
   font-weight: 400;
   font-size: var(--exercise-card-info-size);
   line-height: var(--exercise-card-info-line-height);
   color: var(--exercise-card-text);
-  text-overflow: ellipsis;
 }

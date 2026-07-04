@@ -3,6 +3,7 @@ import { generateErrorToastMessage } from '../js/toastMessages.js';
 import { getQuote } from '../api/requests/getQuote.js';
 import { StorageService } from '../lib/storage.js';
 import { parseError } from '../lib/parseError.js';
+import { initScrollFade } from './scroll-fade.js';
 
 const quoteStorage = new StorageService('quote-of-the-day');
 
@@ -48,6 +49,8 @@ export async function renderQuoteOfTheDay() {
     )}`;
   }
 }
+
+initScrollFade('.quote-text-wrapper', '.quote-text');
 
 function getErrorMessage(error) {
   const { status, message } = parseError(error);

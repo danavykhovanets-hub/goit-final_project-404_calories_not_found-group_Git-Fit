@@ -192,9 +192,6 @@
 }
 
 @media only screen and (min-width: 1440px) {
-    .categories-by-muscles {
-        /*grid-area: main;*/
-    }
 
     .categories-by-muscles-list {
         grid-auto-rows: 242px;
@@ -340,6 +337,11 @@
     height: 24px;
     background: linear-gradient(to bottom, rgba(36, 36, 36, 0) 0%, #242424 100%);
     pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.quote-text-wrapper.scroll-fade-hidden::after {
+    opacity: 0;
 }
 
 .quote-and-img {
@@ -504,7 +506,7 @@
     transition: opacity 0.3s ease;
 }
 
-.motivation-text-wrapper.is-hidden::after {
+.motivation-text-wrapper.scroll-fade-hidden::after {
     opacity: 0;
 }
 
