@@ -17,10 +17,14 @@
   transform: translate(-50%, -50%);
 
   width: 90vw;
+  max-height: 90vh;
   padding: 40px 20px;
+
   border-radius: 20px;
   background-color: var(--color-dark);
   color: var(--color-light);
+
+  overflow: auto;
 }
 
 .modal-large {
