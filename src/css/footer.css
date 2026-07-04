@@ -318,7 +318,7 @@
   position: fixed;
   right: 20px;
   bottom: 20px;
-  z-index: 900;
+  z-index: 10;
 
   display: inline-flex;
   width: 40px;
@@ -355,7 +355,6 @@
 
   pointer-events: none;
 }
-
 
 .scroll-up-btn.is-visible {
   opacity: 1;
