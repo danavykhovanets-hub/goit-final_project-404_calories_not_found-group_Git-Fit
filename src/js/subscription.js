@@ -39,7 +39,8 @@ export function initSubscription() {
       const data = await subscribe(email);
 
       generateSuccessToastMessage(
-        getResponseMessage(data, 'Subscription successful.')
+        getResponseMessage(data, 'Subscription successful.'),
+        { maxWidth: '500px' }
       );
 
       form.reset();

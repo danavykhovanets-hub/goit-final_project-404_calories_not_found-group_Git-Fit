@@ -135,7 +135,9 @@
   border-radius: 999px;
   background-color: rgba(36, 36, 36, 0.03);
   cursor: pointer;
-  transition: transform 0.15s ease, opacity 0.2s ease;
+  transition:
+    transform 0.15s ease,
+    opacity 0.2s ease;
 }
 
 .rating-subgroup:hover {
@@ -245,7 +247,6 @@
   overflow: hidden;
   font-weight: 400;
   font-size: var(--exercise-card-title-size);
-  line-height: var(--exercise-card-title-line-height);
   color: var(--exercise-card-text);
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -275,7 +276,6 @@
     flex-wrap: nowrap;
   }
 }
-
 .exercise-info-item {
   display: flex;
   min-width: 0;
@@ -289,23 +289,19 @@
   color: var(--exercise-card-muted-text);
   flex: 1 1 auto;
 }
-
 .exercise-info-item::-webkit-scrollbar {
   display: none;
 }
-
 @media only screen and (min-width: 375px) {
   .exercise-info-item {
     justify-content: flex-start;
   }
 }
-
 .info-label {
   flex-shrink: 0;
   margin-right: 4px;
   white-space: nowrap;
 }
-
 .info-value {
   white-space: nowrap;
   font-weight: 400;
