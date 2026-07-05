@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=/goit-advancedjs-finalproject-group_4/",
+    "build": "vite build --base=/goit-final_project-404_calories_not_found-group_Git-Fit/",
     "preview": "vite preview"
   },
   "devDependencies": {
